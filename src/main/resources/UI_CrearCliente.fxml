@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="557.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UICrearClienteController">
+   <children>
+      <VBox layoutY="21.0" prefHeight="308.0" prefWidth="557.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="21.0">
+         <children>
+            <HBox alignment="BASELINE_CENTER" layoutX="250.0" layoutY="22.0" prefHeight="25.0" prefWidth="237.0" spacing="10.0">
+               <children>
+                  <Label layoutX="228.0" layoutY="26.0" text="Cuit/DNI" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfCuit" layoutX="319.0" layoutY="22.0" prefHeight="25.0" prefWidth="125.0" GridPane.columnIndex="1" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" layoutX="242.0" layoutY="47.0" prefHeight="25.0" prefWidth="202.0" spacing="10.0">
+               <children>
+                  <Label layoutX="227.0" layoutY="57.0" text="Razón Social" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfRazonSocial" alignment="BASELINE_CENTER" layoutX="319.0" layoutY="53.0" GridPane.columnIndex="1" />
+               </children>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" prefHeight="25.0" prefWidth="194.0" spacing="10.0">
+               <children>
+                  <Label layoutX="226.0" layoutY="90.0" text="Dirección" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfDireccion" layoutX="319.0" layoutY="86.0" prefHeight="25.0" prefWidth="132.0" GridPane.columnIndex="1" />
+               </children>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" spacing="10.0">
+               <children>
+                  <Label layoutX="225.0" layoutY="127.0" text="Localidad" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="cbLocalidad" layoutX="319.0" layoutY="123.0" prefHeight="25.0" prefWidth="134.0" />
+               </children>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" spacing="10.0">
+               <children>
+                  <Label layoutX="226.0" layoutY="163.0" text="Provincia" GridPane.columnIndex="1" />
+                  <TextField fx:id="tfProvincia" layoutX="319.0" layoutY="159.0" prefHeight="25.0" prefWidth="131.0" GridPane.columnIndex="1" />
+               </children>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" spacing="10.0">
+               <children>
+                  <Label layoutX="232.0" layoutY="198.0" text="Celular" />
+                  <TextField fx:id="tfCelular" layoutX="319.0" layoutY="194.0" prefHeight="25.0" prefWidth="120.0" />
+               </children>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" spacing="10.0">
+               <children>
+                  <Label layoutX="230.0" layoutY="238.0" text="Tel. Fijo" />
+                  <TextField fx:id="tfTelFijo" layoutX="319.0" layoutY="234.0" prefHeight="25.0" prefWidth="125.0" />
+               </children>
+            </HBox>
+            <HBox alignment="BASELINE_CENTER" prefHeight="25.0" prefWidth="263.0" spacing="70.0">
+               <children>
+                  <Button fx:id="btnCancelar" layoutX="374.0" layoutY="289.0" mnemonicParsing="false" onAction="#onActionBtnCancelar" prefHeight="25.0" prefWidth="87.0" text="Cancelar" />
+                  <Button fx:id="btnInsertar" layoutX="294.0" layoutY="289.0" mnemonicParsing="false" onAction="#actionBtnInsertar" prefHeight="25.0" prefWidth="98.0" text="Crear Cliente" />
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
