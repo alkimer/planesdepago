@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIReportePagosDiarios">
+   <children>
+      <DatePicker fx:id="dpFecha" layoutX="38.0" layoutY="28.0" />
+      <Button fx:id="btnGenerarReporte" layoutX="227.0" layoutY="28.0" mnemonicParsing="false" onAction="#onActionBtnGenerarReporte" text="Generar reporte" />
+      <TableView fx:id="tvPagos" layoutX="38.0" layoutY="77.0" prefHeight="260.0" prefWidth="504.0">
+          <placeholder>
+              <Label text="No se registraron pagos el día seleccionado." />
+          </placeholder>
+        <columns>
+            <TableColumn fx:id="tcRazonSocial" prefWidth="110.0" text="Razon Social" />
+          <TableColumn fx:id="tcFecha" prefWidth="112.0" text="Fecha pago" />
+            <TableColumn fx:id="tcDescripcion" minWidth="0.0" prefWidth="138.0" text="Descripcion" />
+          <TableColumn fx:id="tcMonto" prefWidth="143.0" text="Monto" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfTotalIngresos" editable="false" layoutX="383.0" layoutY="350.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <Label layoutX="290.0" layoutY="354.0" text="Total ingresos" />
+   </children>
+</AnchorPane>

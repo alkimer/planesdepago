@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="543.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIVerEstadoPagosController">
+   <children>
+      <TableView fx:id="tvCuotasPagos" layoutX="42.0" layoutY="85.0" prefHeight="313.0" prefWidth="516.0">
+        <columns>
+          <TableColumn fx:id="tcCuota" prefWidth="75.0" text="Nro. Cuota" />
+          <TableColumn fx:id="tcMontoCuota" prefWidth="102.0" text="Monto Cuota" />
+            <TableColumn fx:id="tcFechaVencimiento" prefWidth="115.0" text="Fecha Venc." />
+            <TableColumn fx:id="tcCuotaPaga" prefWidth="108.0" text="Cuota paga" />
+            <TableColumn fx:id="tcDescripcion" prefWidth="75.0" text="Descripcion" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnNuevoPago" layoutX="500.0" layoutY="489.0" mnemonicParsing="false" onAction="#onActionBtnNuevoPago" text="Nuevo Pago" />
+      <TextField fx:id="tfTotalPagado" disable="true" layoutX="164.0" layoutY="414.0" />
+      <Label layoutX="50.0" layoutY="418.0" text="Total pagado(cuotas) " />
+      <Label layoutX="49.0" layoutY="456.0" text="Saldo restante" />
+      <TextField fx:id="tfSaldoRestante" disable="true" layoutX="164.0" layoutY="452.0" />
+      <Label layoutX="291.0" layoutY="18.0" text="Compra" />
+      <TextField fx:id="tfRazonSocialCliente" editable="false" layoutX="44.0" layoutY="14.0" prefHeight="25.0" prefWidth="204.0" />
+      <TextField fx:id="tfDescripcionCompra" editable="false" layoutX="353.0" layoutY="14.0" prefHeight="25.0" prefWidth="226.0" />
+      <TextField fx:id="tfMontoCompra" editable="false" layoutX="141.0" layoutY="44.0" prefHeight="25.0" prefWidth="108.0" />
+      <Label layoutX="46.0" layoutY="48.0" text="Monto Compra" />
+      <TextField fx:id="tfAnticipo" editable="false" layoutX="353.0" layoutY="44.0" prefHeight="25.0" prefWidth="82.0" />
+      <Label layoutX="290.0" layoutY="48.0" text="Anticipo" />
+      <TextField fx:id="tfInteres" editable="false" layoutX="536.0" layoutY="44.0" prefHeight="25.0" prefWidth="45.0" />
+      <Label layoutX="473.0" layoutY="48.0" text="Interes(%)" />
+      <Button fx:id="btnImprimirPlanPagos" layoutX="226.0" layoutY="489.0" mnemonicParsing="false" onAction="#onActionBtnImprimirPlanPagos" prefHeight="25.0" prefWidth="141.0" text="Imprimir Plan de Pagos" />
+   </children>
+</AnchorPane>
