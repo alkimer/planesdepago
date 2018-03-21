@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="625.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIVerPagosYcuotasController">
+   <children>
+      <TableView fx:id="tvCuotasPagos" layoutX="50.0" layoutY="47.0" prefHeight="286.0" prefWidth="516.0">
+        <columns>
+          <TableColumn fx:id="tcCuota" prefWidth="75.0" text="Nro. Cuota" />
+          <TableColumn fx:id="tcMontoCuota" prefWidth="102.0" text="Monto Cuota" />
+            <TableColumn fx:id="tcFechaVencimiento" prefWidth="115.0" text="Fecha Venc." />
+            <TableColumn fx:id="tcCuotaPaga" prefWidth="108.0" text="Cuota paga" />
+            <TableColumn fx:id="tcDescripcion" prefWidth="75.0" text="Descripcion" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnNuevoPago" layoutX="50.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnNuevoPago" text="Nuevo Pago" />
+      <TextField fx:id="tfTotalPagado" disable="true" layoutX="164.0" layoutY="362.0" />
+      <Label layoutX="50.0" layoutY="366.0" text="Total pagado " />
+      <Label layoutX="50.0" layoutY="413.0" text="Saldo restante" />
+      <TextField fx:id="tfSaldoRestante" disable="true" layoutX="164.0" layoutY="409.0" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.MainController">
+   <children>
+      <TableView fx:id="tvListaClientes" layoutY="50.0" prefHeight="551.0" prefWidth="770.0">
+        <columns>
+          <TableColumn fx:id="tcCuit" prefWidth="75.0" text="CUIT" />
+          <TableColumn fx:id="tcRazonSocial" prefWidth="75.0" text="Razon Social" />
+            <TableColumn fx:id="tcDireccion" prefWidth="75.0" text="Direccion" />
+            <TableColumn fx:id="tcLocalidad" prefWidth="75.0" text="Localidad" />
+            <TableColumn fx:id="tcProvincia" prefWidth="75.0" text="Provincia" />
+            <TableColumn fx:id="tcCelular" prefWidth="75.0" text="Celular" />
+            <TableColumn fx:id="tcTelFijo" prefWidth="75.0" text="Tel. Fijo" />
+        </columns>
+      </TableView>
+      <Button fx:id="btNuevoCliente" layoutX="32.0" layoutY="14.0" mnemonicParsing="false" onAction="#actionBtnNuevoCliente" text="Nuevo Cliente" />
+      <Button fx:id="btnEditarCliente" layoutX="131.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnEditarCliente" text="Editar Cliente" />
+      <Button fx:id="btnEliminarCliente" layoutX="227.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnEliminarCliente" text="Eliminar Cliente" />
+      <Button fx:id="btnCrearPlanPagos" layoutX="339.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnCrearPlanPagos" text="Crear Plan de Pagos" />
+      <Button fx:id="btnVerComprasCliente" layoutX="475.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnVerComprasCliente" text="Ver Planes de Pago" />
+   </children>
+</AnchorPane>
