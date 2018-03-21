@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UICrearPlanPagosController">
+   <children>
+      <TextField fx:id="tfDescripcion" layoutX="142.0" layoutY="99.0" prefHeight="25.0" prefWidth="394.0" />
+      <DatePicker fx:id="dpFecha" layoutX="599.0" layoutY="99.0" prefHeight="25.0" prefWidth="119.0" />
+      <TextField fx:id="tfMonto" layoutX="140.0" layoutY="134.0" prefHeight="25.0" prefWidth="103.0" />
+      <TextField fx:id="tfAnticipo" layoutX="315.0" layoutY="134.0" prefHeight="25.0" prefWidth="90.0" />
+      <ComboBox fx:id="cbCantCuotas" layoutX="466.0" layoutY="134.0" prefHeight="25.0" prefWidth="45.0" />
+      <TextField fx:id="tfInteres" layoutX="622.0" layoutY="134.0" prefHeight="25.0" prefWidth="50.0" />
+      <Button fx:id="btnCrearPlanDePagos" layoutX="592.0" layoutY="567.0" mnemonicParsing="false" onAction="#onActionBtnCrearPlanDePagos" prefHeight="25.0" prefWidth="110.0" text="Crear Plan" />
+      <Button fx:id="btnCalcularCuotas" layoutX="43.0" layoutY="176.0" mnemonicParsing="false" onAction="#onActionBtnCalcularCuotas" text="Calcular cuotas" />
+      <Label layoutX="36.0" layoutY="24.0" text="Cliente Seleccionado" />
+      <TextField fx:id="tfCuit" disable="true" editable="false" layoutX="167.0" layoutY="20.0" />
+      <Separator layoutX="36.0" layoutY="51.0" prefHeight="11.0" prefWidth="689.0" />
+      <Label layoutX="51.0" layoutY="138.0" text="Monto compra" />
+      <Label layoutX="36.0" layoutY="62.0" text="Ingrese los datos del plan de pagos a realizar">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="561.0" layoutY="103.0" text="Fecha" />
+      <Label layoutX="422.0" layoutY="138.0" text="Cuotas" />
+      <Label layoutX="561.0" layoutY="138.0" prefHeight="17.0" prefWidth="62.0" text="Interés(%)" />
+      <Label layoutX="258.0" layoutY="138.0" text="Anticipo" />
+      <TableView fx:id="tvListaCalculoCuotas" editable="true" layoutX="105.0" layoutY="265.0" prefHeight="302.0" prefWidth="435.0">
+        <columns>
+          <TableColumn fx:id="tcNroCuota" editable="false" prefWidth="75.0" text="Cuota" />
+            <TableColumn fx:id="tcVencimientoCuota" prefWidth="144.0" text="Vencimiento" />
+            <TableColumn fx:id="tcDescripcionCuota" prefWidth="140.0" text="Descripción" />
+          <TableColumn fx:id="tcMontoCuota" prefWidth="75.0" text="Monto" />
+        </columns>
+      </TableView>
+      <Label layoutX="51.0" layoutY="103.0" text="Descripcion" />
+      <TextField fx:id="tfImporteAFinanciar" editable="false" layoutX="142.0" layoutY="227.0" />
+      <Label layoutX="29.0" layoutY="231.0" text="Importe a financiar" />
+      <TextField fx:id="tfTotalCuotas" editable="false" layoutX="391.0" layoutY="567.0" />
+      <Label layoutX="321.0" layoutY="571.0" text="Total Cuotas" />
+      <Separator layoutX="29.0" layoutY="210.0" prefHeight="11.0" prefWidth="689.0" />
+      <Label layoutX="405.0" layoutY="24.0" text="Razon Social" />
+      <TextField fx:id="tfRazonSocial" disable="true" editable="false" layoutX="481.0" layoutY="20.0" prefHeight="25.0" prefWidth="236.0" />
+   </children>
+</AnchorPane>

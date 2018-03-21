@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="499.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIListadoComprasClienteController">
+   <children>
+      <TableView fx:id="tvListaCompras" layoutX="22.0" layoutY="50.0" prefHeight="414.0" prefWidth="564.0">
+        <columns>
+          <TableColumn fx:id="tcRazonSocial" prefWidth="75.0" text="Razon Social" />
+            <TableColumn fx:id="tcDescripcion" prefWidth="121.0" text="Descripcion" />
+          <TableColumn fx:id="tcFecha" prefWidth="29.0" text="Fecha" />
+            <TableColumn fx:id="tcMontoCompra" prefWidth="75.0" text="Monto Compra" />
+            <TableColumn fx:id="tcMontoFinanciado" prefWidth="75.0" text="Monto Financiado" />
+            <TableColumn fx:id="tcCuotas" prefWidth="75.0" text="Cuotas" />
+            <TableColumn fx:id="tcSaldoRestante" prefWidth="75.0" text="Saldo restante" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnVerCuotasYpagos" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnVerCuotasYpagos" text="Ver Cuotas y Pagos" />
+      <Button fx:id="btnPagosRealizados" layoutX="217.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnPagosRealizados" text="Ver Pagos realizados" />
+   </children>
+</AnchorPane>
