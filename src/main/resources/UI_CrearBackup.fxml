@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UICrearBackupController">
+   <children>
+      <Label layoutX="22.0" layoutY="97.0" text="Ingrese el nombre del backup" />
+      <TextField fx:id="tfNombreBackup" layoutX="192.0" layoutY="93.0" prefHeight="25.0" prefWidth="240.0" />
+      <Button fx:id="btnCrearBackup" layoutX="297.0" layoutY="169.0" mnemonicParsing="false" onAction="#onActionBtnCrearBackup" text="Crear Backup" />
+      <Button fx:id="btnCancelar" layoutX="85.0" layoutY="169.0" mnemonicParsing="false" onAction="#onActionBtnCancelar" text="Cancelar" />
+      <Label layoutX="166.0" layoutY="22.0" text="Creación de Backups" />
+   </children>
+</AnchorPane>

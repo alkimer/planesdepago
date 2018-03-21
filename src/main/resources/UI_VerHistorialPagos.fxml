@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="477.0" prefWidth="579.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIVerHistorialPagosController">
+   <children>
+      <TableView fx:id="tvPagos" layoutY="66.0" prefHeight="346.0" prefWidth="579.0">
+          <placeholder>
+              <Label text="No hay pagos ingresados para esta compra." />
+          </placeholder>
+        <columns>
+          <TableColumn fx:id="tcFecha" prefWidth="117.0" text="Fecha" />
+            <TableColumn fx:id="tcDescripcion" prefWidth="303.0" text="Descripcion" />
+          <TableColumn fx:id="tcMonto" prefWidth="158.0" text="Monto" />
+        </columns>
+      </TableView>
+      <Label layoutX="223.0" layoutY="6.0" text="Historico de Pagos" />
+      <Label layoutX="32.0" layoutY="34.0" text="Nombre" />
+      <Label layoutX="251.0" layoutY="34.0" text="Compra" />
+      <TextField fx:id="tfNombre" editable="false" layoutX="92.0" layoutY="30.0" />
+      <TextField fx:id="tfDescripcionCompra" editable="false" layoutX="308.0" layoutY="30.0" prefHeight="25.0" prefWidth="259.0" />
+      <Button fx:id="btnImprimir" layoutX="277.0" layoutY="451.0" mnemonicParsing="false" onAction="#onActionBtnImprimir" text="Imprimir" />
+      <TextField fx:id="tfMontoFinanciado" layoutX="446.0" layoutY="418.0" prefHeight="25.0" prefWidth="122.0" />
+      <Label layoutX="344.0" layoutY="422.0" text="Monto financiado" />
+      <TextField fx:id="tfSaldoRestante" layoutX="120.0" layoutY="418.0" />
+      <Label layoutX="37.0" layoutY="422.0" text="Saldo Restante" />
+   </children>
+</AnchorPane>

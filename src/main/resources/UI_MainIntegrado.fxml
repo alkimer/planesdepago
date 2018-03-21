@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIMainIntegradoController">
+   <top>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar fx:id="mbMenuSuperior" layoutY="2.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Reportes">
+                  <items>
+                    <MenuItem fx:id="miDeudoresVencidos" mnemonicParsing="false" onAction="#onActionMiDeudoresVencidos" text="Deudores(Vencidos)" />
+                        <MenuItem fx:id="miDeudoresTodos" mnemonicParsing="false" onAction="#onActionMiDeudoresTodos" text="Deudores(Todos)" />
+                        <MenuItem fx:id="miTotalesDiarios" mnemonicParsing="false" onAction="#onActionMiTotalesDiarios" text="Totales Diarios" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Clientes">
+                  <items>
+                    <MenuItem fx:id="miNuevoCliente" mnemonicParsing="false" onAction="#onActionMiNuevoCliente" text="Nuevo Cliente" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Backups">
+                     <items>
+                        <MenuItem fx:id="miRestaurar" mnemonicParsing="false" onAction="#onActionMiRestaurar" text="Restaurar Backup" />
+                        <MenuItem fx:id="miRestaurarBackup" mnemonicParsing="false" onAction="#onActionMiCrearBackup" text="Crear Backup" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <BorderPane BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
