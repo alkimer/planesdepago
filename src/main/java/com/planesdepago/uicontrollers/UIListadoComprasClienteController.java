@@ -1,13 +1,13 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.dao.CompraDao;
 import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
-import com.planesdepago.uiUtils.Constantes;
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ApplicationContext;
 
 import javafx.beans.binding.Bindings;
@@ -44,7 +44,6 @@ public class UIListadoComprasClienteController extends AbstractController implem
   EntityManager entityManager;
 
   private Cliente cliente;
-  private ClienteDao clienteDao;
 
   private Compra compraSeleccionada;
 
@@ -156,30 +155,24 @@ public class UIListadoComprasClienteController extends AbstractController implem
 
 
   private void onVerCuotasYpagos(ActionEvent event) {
-    // int selectedIndex = tvListaCompras.getSelectionModel().getSelectedIndex();
-
-    //compraSeleccionada = tvListaCompras.getItems().get(selectedIndex);
 
     AbstractController cont =
         cambiarEscena("Estado de Pagos", "/UI_VerEstadoPagos.fxml", Modality.WINDOW_MODAL, this, event);
     ((UIVerEstadoPagosController) cont).init(compraSeleccionada);
 
 
-    cont.stage.setOnCloseRequest(e -> {
-      this.buscarTodasLasCompras();
-    });
+    cont.stage.setOnCloseRequest(e ->
+      this.buscarTodasLasCompras()
+    );
 
 
   }
 
   @FXML
   private void onActionBtnNuevaCompra(ActionEvent event) {
-    //   int selectedIndex = tvListaClientes.getSelectionModel().getSelectedIndex();
-    //  if (selectedIndex >= 0) {
     if (this.cliente != null) {
       AbstractController cont =
           cambiarEscena("Crear Plan de Pagos", "/UI_CrearPlanPagos.fxml", Modality.WINDOW_MODAL, this, event);
-      // controllerNC.mapCliente2UI().map
       ((UICrearPlanPagosController) cont).init(cliente);
       ((UICrearPlanPagosController) cont).setMainController(this);
 
@@ -206,7 +199,6 @@ public class UIListadoComprasClienteController extends AbstractController implem
       public TableRow<Compra> call(TableView<Compra> tableView) {
         final TableRow<Compra> row = new TableRow<>();
         final ContextMenu contextMenuCompleto = new ContextMenu();
-        final ContextMenu contextMenuReducido;
 
         final MenuItem ingresarPagoItem = new MenuItem("Nuevo Pago/Ver Plan de Pagos");
         ingresarPagoItem.setOnAction(new EventHandler<ActionEvent>() {
@@ -274,16 +266,6 @@ public class UIListadoComprasClienteController extends AbstractController implem
 
   }
 
-  /*
-    ActionEvent mapToNodeCompatibleEvent(ActionEvent eventSource) {
-
-      //Cambio event que viene del menuitem por un nuevo event2  que viene desde la tabla,
-      // Triquiñuela para cambiar el elemento que generó el evento, ya que el
-      // menu item no hereda de Node y no puedo obtener el Window al que pertenece.
-      ActionEvent event2 = null;
-      return eventSource.copyFor(tvListaCompras, eventSource.getTarget());
-    }
-  */
   private void onEliminarCompra() {
 
     CompraDao compraDao;

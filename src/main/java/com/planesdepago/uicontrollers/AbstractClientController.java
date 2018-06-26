@@ -1,9 +1,10 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 
 import com.planesdepago.entities.Cliente;
-import com.planesdepago.uiUtils.DialogPopUp;
-import com.planesdepago.uiUtils.ListaLocalidades;
+import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.DialogPopUp;
+import com.planesdepago.uiutils.ListaLocalidades;
 import com.planesdepago.util.ApplicationContext;
 
 import javafx.fxml.FXML;
@@ -69,19 +70,19 @@ public abstract class AbstractClientController extends AbstractController {
   boolean camposObligatoriosValidosParaCliente() {
 
     if (tfCuit.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.ERROR_DIALOG_HEADER, Constantes.TEXT_VERIFIQUE_LOS_DATOS,
           "El campo Cuit/DNI es obligatorio");
       return false;
     }
 
     if (tfRazonSocial.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.ERROR_DIALOG_HEADER, Constantes.TEXT_VERIFIQUE_LOS_DATOS,
           "El campo Razón Social es obligatorio");
       return false;
     }
 
     if (this.cbLocalidad.getValue() == null) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.ERROR_DIALOG_HEADER, Constantes.TEXT_VERIFIQUE_LOS_DATOS,
           "El campo Localidad es obligatorio");
       return false;
     }

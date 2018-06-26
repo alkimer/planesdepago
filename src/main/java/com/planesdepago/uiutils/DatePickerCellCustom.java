@@ -1,11 +1,7 @@
-package com.planesdepago.uiUtils;
+package com.planesdepago.uiutils;
 
 import com.planesdepago.entities.Cuota;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -14,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableCell;
+
+import java.time.LocalDate;
 
 public class DatePickerCellCustom<S, T> extends TableCell<Cuota, LocalDate> {
   private DatePicker datePicker;
@@ -44,8 +42,6 @@ public class DatePickerCellCustom<S, T> extends TableCell<Cuota, LocalDate> {
 
     super.updateItem(item, empty);
 
-    SimpleDateFormat smp = new SimpleDateFormat(DateUtils.FORMATO_FECHA);
-
     if (null == this.datePicker) {
       System.out.println("datePicker is NULL");
     }
@@ -66,23 +62,7 @@ public class DatePickerCellCustom<S, T> extends TableCell<Cuota, LocalDate> {
     }
   }
 
-  private void setDatepikerDate(String dateAsStr) {
 
-    LocalDate ld = null;
-    int jour, mois, annee;
-
-    jour = mois = annee = 0;
-    try {
-      jour = Integer.parseInt(dateAsStr.substring(0, 2));
-      mois = Integer.parseInt(dateAsStr.substring(3, 5));
-      annee = Integer.parseInt(dateAsStr.substring(6, dateAsStr.length()));
-    } catch (NumberFormatException e) {
-      System.out.println("setDatepikerDate / unexpected error " + e);
-    }
-
-    ld = LocalDate.of(annee, mois, jour);
-    datePicker.setValue(ld);
-  }
 
   private void createDatePicker() {
     this.datePicker = new DatePicker();
@@ -101,11 +81,6 @@ public class DatePickerCellCustom<S, T> extends TableCell<Cuota, LocalDate> {
     });
 
     setAlignment(Pos.CENTER);
-  }
-
-  @Override
-  public void startEdit() {
-    super.startEdit();
   }
 
   @Override

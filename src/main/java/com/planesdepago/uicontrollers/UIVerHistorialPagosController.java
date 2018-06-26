@@ -1,6 +1,6 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 import static com.planesdepago.util.PdfUtils.crearEncabezadoMiSuenioHogar;
 import static com.planesdepago.util.PdfUtils.crearHeader;
 import static com.planesdepago.util.PdfUtils.crearRandomPDFFileName;
@@ -16,8 +16,8 @@ import com.planesdepago.dao.CompraDao;
 import com.planesdepago.dao.PagoDao;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.uiUtils.DateUtils;
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.uiutils.DateUtils;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.PdfUtils;
 
@@ -140,7 +140,6 @@ public class UIVerHistorialPagosController extends AbstractController implements
         eliminarPago.setOnAction(new EventHandler<ActionEvent>() {
           @Override
           public void handle(ActionEvent event) {
-            //   onVerCuotasYpagos(mapToNodeCompatibleEvent(tvPagos, event));
             onEliminarPago(row.getItem());
           }
         });
@@ -196,8 +195,6 @@ public class UIVerHistorialPagosController extends AbstractController implements
     tableHistoricoPagos.addCell("");
     tableHistoricoPagos.addCell(tfSaldoRestante.getText());
     tableHistoricoPagos.addCell("");
-    ;
-
 
     try {
       document.add(tableHistoricoPagos);
@@ -223,7 +220,6 @@ public class UIVerHistorialPagosController extends AbstractController implements
       CompraDao compraDao = new CompraDao(entityManager);
       PagoDao pagoDao = new PagoDao(entityManager);
       pagoSeleccionado = (Pago) pagoDao.find(pagoSeleccionado.getIdPago());
-      // Compra compra = (Compra)compraDao.find(pagoSeleccionado.getCompraID());
       Compra compra = pagoSeleccionado.getCompraID();
       compra.setSaldoRestante(compra.getSaldoRestante().add(pagoSeleccionado.getMontoPagado()));
       compra.getPagos().remove(pagoSeleccionado);

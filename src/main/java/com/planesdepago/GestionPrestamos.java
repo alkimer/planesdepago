@@ -3,14 +3,14 @@
  */
 package com.planesdepago;
 
-import static com.planesdepago.uiUtils.Constantes.DB_BACKUP_FOLDER;
-import static com.planesdepago.util.PdfUtils.deletePdfFiles;
+import static com.planesdepago.uiutils.Constantes.DB_BACKUP_FOLDER;
 import static com.planesdepago.util.DatabaseUtils.backUpDatabase;
+import static com.planesdepago.util.PdfUtils.deletePdfFiles;
 
-import com.planesdepago.uiControllers.UIMainIntegradoController;
-import com.planesdepago.uiUtils.Constantes;
+import com.planesdepago.uicontrollers.UIMainIntegradoController;
+import com.planesdepago.uiutils.Constantes;
 import com.planesdepago.util.ArchivosUtils;
-import com.planesdepago.util.DatabaseUtils;
+import com.planesdepago.util.PropertiesUtils;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -21,9 +21,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class GestionPrestamos extends Application {
@@ -34,6 +32,8 @@ public class GestionPrestamos extends Application {
 
   @Override
   public void start(Stage primaryStage) throws IOException, Exception {
+
+   String ho = PropertiesUtils.readProperty("test");
     //Los backups que empiezaon on IDENTIFICADOR_BACKUP_AUTOMATICO son los generados automaticamente, los otros son
     // los que creó el usuario.
     String backupdirectory = DB_BACKUP_FOLDER + Constantes.IDENTIFICADOR_BACKUP_AUTOMATICO + ArchivosUtils.todaysDate
@@ -50,7 +50,7 @@ public class GestionPrestamos extends Application {
     //Crear backup
     //si no existe el backup lo creo
     //la idea es que la primera ejecución de cada dia se cree el backup.
-   if (Files.notExists(Paths.get(backupdirectory))) {
+   if (!(Paths.get(backupdirectory).toFile().exists())) {
 
       backUpDatabase(backupdirectory);
     }

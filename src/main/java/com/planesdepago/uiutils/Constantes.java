@@ -1,11 +1,12 @@
-package com.planesdepago.uiUtils;
+package com.planesdepago.uiutils;
 
 import com.planesdepago.util.PropertiesUtils;
 
-/**
- * Created by alkim on 6/5/2018.
- */
 public class Constantes {
+
+  private Constantes() {
+    throw new IllegalStateException("Utility class shouldn't be instantiated.");
+  }
 
   public static final String ANTICIPO = "Anticipo";
   public static final String SIN_CLIENTE_SELECCIONADO = "Sin cliente seleccionado.";
@@ -26,6 +27,8 @@ public class Constantes {
   public final static int MAX_CANTIDAD_BACKUPS = 7;
   public final static String IDENTIFICADOR_BACKUP_AUTOMATICO = "$";
   public final static String PATH_PROPERTIES_FILE = "./src/main/resources/";
-
-
+  public static final String ERROR_DIALOG_HEADER = "Error";
+  public static final String TEXT_VERIFIQUE_LOS_DATOS = "Por favor verifique los datos ingresados.";
+  public static final String TEXT_ERROR = "Error";
+  public static final String TEXT_REVISE_LA_INFORMACION = "Verifique los datos ingresados";
 }

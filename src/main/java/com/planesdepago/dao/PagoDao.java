@@ -1,9 +1,8 @@
 package com.planesdepago.dao;
 
-import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.uiUtils.Constantes;
+import com.planesdepago.uiutils.Constantes;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

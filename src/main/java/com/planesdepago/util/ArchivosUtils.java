@@ -1,13 +1,11 @@
 package com.planesdepago.util;
 
-import static com.planesdepago.uiUtils.Constantes.DB_BACKUP_FOLDER;
-import static com.planesdepago.uiUtils.Constantes.MAX_CANTIDAD_BACKUPS;
+import static com.planesdepago.uiutils.Constantes.DB_BACKUP_FOLDER;
 
-import com.planesdepago.uiUtils.Constantes;
+import com.planesdepago.uiutils.Constantes;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.DirectoryIteratorException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +18,7 @@ import java.util.List;
  * Created by alkim on 6/25/2018.
  */
 public class ArchivosUtils {
-  public final static SimpleDateFormat todaysDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
+  public static final SimpleDateFormat todaysDate = new java.text.SimpleDateFormat("yyyy-MM-dd");
 
 
 
@@ -30,8 +28,8 @@ public class ArchivosUtils {
   public void sanitizarBackupFolder() {
     int maxCantidadBackups;
     maxCantidadBackups = Integer.valueOf(PropertiesUtils.readProperty("maxCantidadBackups"));
-    List<Path> result = this.obtenerListadoArchivos(DB_BACKUP_FOLDER);
-    List<Path> listaBackupsAutomaticos = new ArrayList<Path>();
+    List<Path> result = obtenerListadoArchivos(DB_BACKUP_FOLDER);
+    List<Path> listaBackupsAutomaticos = new ArrayList<>();
 
     //Obtuve el listado de archivos, pero están incluidos los backups que hizo el usuario por pedido, estos los debo
     // quitar. Sólo lo dejo los automáticos, que son los que comienzan con el IDENTIFICADOR_BACKUP_AUTOMATICO.
@@ -66,7 +64,7 @@ for (Path backup: result) {
 
     List<Path> result = new ArrayList<>();
     //Si cambie la carpeta, la primera vez no va a existir, entonces la creo
-    if (Files.notExists(Paths.get(carpeta))) {
+    if (!(Paths.get(carpeta).toFile().exists())) {
       try {
         Files.createFile(Files.createDirectories(Paths.get(carpeta)));
       } catch (IOException e) {
@@ -84,7 +82,7 @@ for (Path backup: result) {
       }
     } catch (IOException e1) {
       e1.printStackTrace();
-      return null;
+      return result;
     }
   }
 }

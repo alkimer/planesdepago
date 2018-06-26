@@ -1,6 +1,6 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.dao.CompraDao;
@@ -8,7 +8,7 @@ import com.planesdepago.dao.PagoDao;
 import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.uiUtils.DateUtils;
+import com.planesdepago.uiutils.DateUtils;
 import com.planesdepago.util.ApplicationContext;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -97,14 +97,13 @@ public class UIReportePagosDiarios extends AbstractController implements Initial
 
             Pago pago = (Pago) pagoDao.find(param.getValue().getIdPago());
             Compra compra = (Compra) compraDao.find(pago.getCompraID().getIdTransaccion());
-            Cliente cliente = (Cliente) clienteDao.find(compra.getIDCliente().getCuit());
+            Cliente cliente = clienteDao.find(compra.getIDCliente().getCuit());
 
             //Parece que al cerrar este em se cierran los demás (el de pago y cliente)
             pagoDao.close();
             return new SimpleStringProperty(cliente.getRazonSocial());
           }
         });
-    String pattern = "dd-MM-yyyy";
 
     this.dpFecha.setValue(LocalDate.now());
     this.dpFecha.setConverter(DateUtils.formateadorLocalDate());

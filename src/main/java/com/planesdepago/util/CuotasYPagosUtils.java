@@ -15,9 +15,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.planesdepago.dao.CompraDao;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Cuota;
-import com.planesdepago.tableRows.CuotasYpagos;
-import com.planesdepago.uiUtils.Constantes;
-import com.planesdepago.uiUtils.DateUtils;
+import com.planesdepago.tablerows.CuotasYpagos;
+import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.DateUtils;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,6 +30,10 @@ import javax.persistence.EntityManager;
 
 public class CuotasYPagosUtils {
 
+  private CuotasYPagosUtils() {
+    throw new IllegalStateException("Utility class shouldn't be instantiated.");
+
+  }
   /*
   Computo los pagos realizados y lo comparo con las cuotas, para ver el estado del cliente
   con respecto al plan de pagos
@@ -53,7 +57,7 @@ public class CuotasYPagosUtils {
       if (totalPagos.compareTo(cuota.getMontoCuota()) >= 0) {
         totalPagos = totalPagos.subtract(cuota.getMontoCuota());
         cuotasYpagos.setCuotaPaga(Constantes.CUOTA_PAGA);
-      } else if ((totalPagos.compareTo(cuota.getMontoCuota()) == -1) && (totalPagos.compareTo(BigDecimal.ZERO) != 0)) {
+      } else if ((totalPagos.compareTo(cuota.getMontoCuota()) < 0) && (totalPagos.compareTo(BigDecimal.ZERO) != 0)) {
         cuotasYpagos.setCuotaPaga(Constantes.CUOTA_PAGO_PARCIAL + totalPagos);
         totalPagos = BigDecimal.ZERO;
       } else {
@@ -75,7 +79,6 @@ public class CuotasYPagosUtils {
       TableView<Cuota> tvCuotas) {
     Document document = new Document(PageSize.A4);
     String fileName = crearRandomPDFFileName("PlanDePagos");
-    PdfWriter writer = new PdfUtils().createWriter(document, fileName);
     document.open();
     crearEncabezadoMiSuenioHogar(document);
     crearTitulo(document, "Plan de Pagos");
@@ -133,7 +136,6 @@ public class CuotasYPagosUtils {
       TableView<CuotasYpagos> tvCuotas) {
     Document document = new Document(PageSize.A4);
     String fileName = crearRandomPDFFileName("EstadoPlanDePagos");
-    PdfWriter writer = new PdfUtils().createWriter(document, fileName);
     document.open();
     crearEncabezadoMiSuenioHogar(document);
     crearTitulo(document, "Estado de Plan de Pagos");
