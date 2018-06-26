@@ -1,8 +1,6 @@
 package com.planesdepago.dao;
 
-import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
-import com.planesdepago.entities.Pago;
 
 import java.util.List;
 

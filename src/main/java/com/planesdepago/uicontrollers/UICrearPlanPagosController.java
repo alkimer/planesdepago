@@ -1,17 +1,17 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Cuota;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.uiUtils.Constantes;
-import com.planesdepago.uiUtils.DatePickerCellCustom;
-import com.planesdepago.uiUtils.DateUtils;
-import com.planesdepago.uiUtils.DialogPopUp;
-import com.planesdepago.uiUtils.InputCheck;
+import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.DatePickerCellCustom;
+import com.planesdepago.uiutils.DateUtils;
+import com.planesdepago.uiutils.DialogPopUp;
+import com.planesdepago.uiutils.InputCheck;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.BigDecimalStringConverterCustom;
 import com.planesdepago.util.CuotasYPagosUtils;
@@ -91,7 +91,6 @@ public class UICrearPlanPagosController extends AbstractController implements In
   @FXML
   private TableColumn<Cuota, BigDecimal> tcMontoCuota;
   @FXML
-//  private TableColumn<Cuota, LocalDate> tcVencimientoCuota;
   private TableColumn tcVencimientoCuota;
   @FXML
   private TableColumn<Cuota, String> tcDescripcionCuota;
@@ -197,7 +196,7 @@ public class UICrearPlanPagosController extends AbstractController implements In
       //Calculo el importe a financiar con el interes ingresado
       BigDecimal interes = new BigDecimal(tfInteres.getText());
       BigDecimal importeAFinanciar = montoCompra.subtract(anticipo);
-      importeAFinanciar = importeAFinanciar.add(((interes.multiply(importeAFinanciar).divide(new BigDecimal(100)))));
+      importeAFinanciar = importeAFinanciar.add((interes.multiply(importeAFinanciar).divide(new BigDecimal(100))));
       importeAFinanciar = importeAFinanciar.setScale(2, BigDecimal.ROUND_DOWN);
       tfImporteAFinanciar.setText(String.valueOf(importeAFinanciar));
 
@@ -223,10 +222,12 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
       //Si encuentro que por tema de redondeo, el total de las cuotas difiere del total financiado, entonces agrego esa
       // diferencia en la última cuota.
-      if (importeAFinanciar.compareTo(totalCuotas) == 1) {
+      if (importeAFinanciar.compareTo(totalCuotas) > 0) {
 
-        cuota.setMontoCuota(cuota.getMontoCuota().add(importeAFinanciar.subtract(totalCuotas)));
-        totalCuotas = calcularTotalCuotas(listaCuotas);
+        if (cuota != null) {
+          cuota.setMontoCuota(cuota.getMontoCuota().add(importeAFinanciar.subtract(totalCuotas)));
+          totalCuotas = calcularTotalCuotas(listaCuotas);
+        }
 
       }
 
@@ -237,8 +238,7 @@ public class UICrearPlanPagosController extends AbstractController implements In
       tcVencimientoCuota.setCellFactory(new Callback<TableColumn, TableCell>() {
         @Override
         public TableCell call(TableColumn p) {
-          DatePickerCellCustom datePick = new DatePickerCellCustom(tvListaCalculoCuotas.getItems());
-          return datePick;
+          return new DatePickerCellCustom(tvListaCalculoCuotas.getItems());
         }
       });
     }
@@ -249,7 +249,7 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
     if (camposObligatoriosValidosParaCrearPlan()) {
       if (new BigDecimal(tfTotalCuotas.getText()).compareTo(new BigDecimal(tfImporteAFinanciar.getText())) != 0) {
-        DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Eror", "Revise las cuotas",
+        DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, "Revise las cuotas",
             "Ud. modificó manualmente el monto de las cuotas y éstas no coinciden con el monto a financiar.");
 
       } else {
@@ -273,11 +273,11 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
 
         //Si hubo anticipo lo cargo en forma de Pago para que aparezca en el histórico
-        if (new BigDecimal(tfMonto.getText()).compareTo(new BigDecimal(tfAnticipo.getText())) == -1) {
-          DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Anticipo erróneo",
+        if (new BigDecimal(tfMonto.getText()).compareTo(new BigDecimal(tfAnticipo.getText())) < 0) {
+          DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, "Anticipo erróneo",
               "El anticipo no puede ser mayor que el monto de la compra");
         } else {
-          if (new BigDecimal(tfAnticipo.getText()).compareTo(BigDecimal.ZERO) == 1) {
+          if (new BigDecimal(tfAnticipo.getText()).compareTo(BigDecimal.ZERO) > 0) {
             //Si el anticipo es mayor a 0 , lo guardo como pago
             pago.setMontoPagado(new BigDecimal(tfAnticipo.getText()));
             pago.setDescripcionPago(Constantes.ANTICIPO);
@@ -309,22 +309,22 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
   private boolean camposObligatoriosValidosParaCrearPlan() {
     if (tfDescripcion.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Debe ingresar una descripción para el Plan de Pagos");
       return false;
     }
     if (tfMonto.getText().trim().equals("0")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Ingresó un valor inválido para el monto de la compra");
       return false;
     }
     if (tfAnticipo.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Ingresó un valor inválido el anticipo");
       return false;
     }
     if (tfInteres.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Ingresó un valor inválido para el interés");
       return false;
     }
@@ -335,17 +335,17 @@ public class UICrearPlanPagosController extends AbstractController implements In
   private boolean camposObligatoriosValidosParaCalcularCuotas() {
 
     if (tfMonto.getText().trim().equals("0")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Ingresó un valor inválido para el Monto de la compra");
       return false;
     }
     if (tfAnticipo.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Ingresó un valor inválido en el campo Anticipo");
       return false;
     }
     if (tfInteres.getText().trim().equals("")) {
-      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Verifique los datos ingresados",
+      DialogPopUp.crearDialogo(Alert.AlertType.ERROR, Constantes.TEXT_ERROR, Constantes.TEXT_REVISE_LA_INFORMACION,
           "Ingresó un valor inválido para el campo Interés");
       return false;
     }
@@ -380,17 +380,13 @@ public class UICrearPlanPagosController extends AbstractController implements In
     tcMontoCuota.setOnEditStart(data -> {
       btnCrearPlanDePagos.setDisable(true);
       tfTotalCuotas.setText("");
-      //InputCheck.procesarIngresoMonto(data);
 
     });
     tcVencimientoCuota.setCellValueFactory(new PropertyValueFactory<Cuota, LocalDate>("fechaVencimiento"));
-    tcVencimientoCuota.setOnEditCommit(data -> {
+    tcVencimientoCuota.setOnEditCommit(data ->
 
-      btnCrearPlanDePagos.setDisable(false);
-    });
-    tcVencimientoCuota.setOnEditStart(data -> {
-      btnCrearPlanDePagos.setDisable(true);
-    });
+        btnCrearPlanDePagos.setDisable(false));
+    tcVencimientoCuota.setOnEditStart(data -> btnCrearPlanDePagos.setDisable(true));
     tcDescripcionCuota.setCellValueFactory(new PropertyValueFactory<Cuota, String>("descripcion"));
     tcDescripcionCuota.setOnEditCommit(data -> {
       Cuota cuota = data.getRowValue();
@@ -398,9 +394,7 @@ public class UICrearPlanPagosController extends AbstractController implements In
       btnCrearPlanDePagos.setDisable(false);
 
     });
-    tcDescripcionCuota.setOnEditStart(data -> {
-      btnCrearPlanDePagos.setDisable(true);
-    });
+    tcDescripcionCuota.setOnEditStart(data -> btnCrearPlanDePagos.setDisable(true));
     tcDescripcionCuota.setCellFactory(TextFieldTableCell.forTableColumn());
 
 

@@ -1,4 +1,4 @@
-package com.planesdepago.tableRows;
+package com.planesdepago.tablerows;
 
 import java.math.BigDecimal;
 

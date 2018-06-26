@@ -1,4 +1,4 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 
 import static com.planesdepago.util.CuotasYPagosUtils.obtenerTablaDeCuotas;
@@ -19,10 +19,9 @@ import com.planesdepago.dao.CompraDao;
 import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Cuota;
-import com.planesdepago.tableRows.CuotasYpagos;
-import com.planesdepago.uiUtils.Constantes;
-import com.planesdepago.uiUtils.DateUtils;
-import com.planesdepago.uiUtils.ListaLocalidades;
+import com.planesdepago.tablerows.CuotasYpagos;
+import com.planesdepago.uiutils.DateUtils;
+import com.planesdepago.uiutils.ListaLocalidades;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.PdfUtils;
 
@@ -35,15 +34,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -51,7 +47,7 @@ import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
 
-public class UIReporteDeudoresVencidosController extends AbstractController implements Initializable {
+public class UIReporteDeudoresTodosController extends AbstractController implements Initializable {
   ApplicationContext context = ApplicationContext.getInstance();
   EntityManager entityManager;
   TableFilter.Builder<Compra> filtro = null;
@@ -76,8 +72,6 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
   private TableColumn<Compra, String> tcDescripcionCompra;
   @FXML
   private TableColumn<Compra, String> tcSaldo;
-  @FXML
-  private DatePicker dpVencimientoAlDia;
 
 
   @Override
@@ -93,7 +87,7 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
           public ObservableValue<String> call(
               TableColumn.CellDataFeatures<Compra, String> param) {
             Cliente cliente = param.getValue().getIDCliente();
-            return new SimpleStringProperty(ListaLocalidades.valueOf(cliente.getLocalidad()).displayName());
+            return new SimpleStringProperty(ListaLocalidades.valueOf(cliente.getLocalidad()));
           }
         });
     tcDireccion
@@ -132,22 +126,9 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
           }
         });
 
-    dpVencimientoAlDia.setValue(LocalDate.now());
-    dpVencimientoAlDia.setConverter(DateUtils.formateadorLocalDate());
-    dpVencimientoAlDia.setDisable(true);
-    /*
-    dpVencimientoAlDia.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-      public void handle(ActionEvent event) {
-
-
-      }
-    });
-    */
-
 
     compraDao.close();
-    this.generarReporteUIDeudores(true);
+    this.generarReporteUIDeudores();
   }
 
 
@@ -156,29 +137,29 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
    */
   @FXML
   private void onActionBtnImprimir(ActionEvent event) {
-    this.generarReportePDFDeudoresConCuotaVencida(true);
+    this.generarReportePDFDeudoresTodos(true);
   }
 
   /*
-  Imprimir resumido : solo saldos vencidos
+  Imprimir resumido
    */
   @FXML
   private void onActionImprimirResumido(ActionEvent event) {
-    this.generarReportePDFDeudoresConCuotaVencida(false);
+    this.generarReportePDFDeudoresTodos(false);
   }
 
 
   /*
-  Se genera un reporte PDF de deudores, pero se muestran solo aquellos con cuota vencida
+  Se genera un reporte PDF de TODOS los deudores
    */
-  private void generarReportePDFDeudoresConCuotaVencida(boolean conDetallesPlanPago) {
+  private void generarReportePDFDeudoresTodos(boolean conDetallesPlanPago) {
     entityManager = context.getEntityManager();
     CompraDao compraDao = new CompraDao(entityManager);
     Document document = new Document(PageSize.A4.rotate());
-    String fileName = crearRandomPDFFileName("ReporteDeudoresVencidos");
+    String fileName = crearRandomPDFFileName("ReporteDeudoresTodos");
     PdfWriter writer = new PdfUtils().createWriter(document, fileName);
     document.open();
-    crearTitulo(document, "REPORTE DE DEUDORES - con cuota vencida al");
+    crearTitulo(document, "REPORTE TODOS LOS DEUDORES");
 
     //  Font font = FontFactory.getFont(FontFactory.COURIER, 7, BaseColor.BLACK);
     PdfPTable tableCompra = null;
@@ -217,7 +198,7 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
       }
       tableCompra.addCell(normalTableCellStyle(new PdfPCell(new Phrase(compra.getIDCliente().getRazonSocial()))));
       tableCompra.addCell(normalTableCellStyle(
-          new PdfPCell(new Phrase(ListaLocalidades.valueOf(compra.getIDCliente().getLocalidad()).displayName()))));
+          new PdfPCell(new Phrase(ListaLocalidades.valueOf(compra.getIDCliente().getLocalidad())))));
       tableCompra.addCell(normalTableCellStyle(new PdfPCell(new Phrase(compra.getIDCliente().getDireccion()))));
       tableCompra.addCell(normalTableCellStyle(new PdfPCell(
           new Phrase(compra.getIDCliente().getCelular() + "/" + compra.getIDCliente().getTelefonoFijo()))));
@@ -229,7 +210,7 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
       tableDetalleCompra.setTotalWidth(PageSize.A4.getWidth());
       tableDetalleCompra.setLockedWidth(true);
       if (conDetallesPlanPago) {
-        AgregarTableDetalleCuotas(tableDetalleCompra, obtenerTablaDeCuotas(compra));
+        agregarTableDetalleCuotas(tableDetalleCompra, obtenerTablaDeCuotas(compra));
       }
 
       try {
@@ -253,7 +234,7 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
   }
 
 
-  private void AgregarTableDetalleCuotas(PdfPTable tableDetalleCompra, ObservableList<CuotasYpagos> cuotasYpagoss) {
+  private void agregarTableDetalleCuotas(PdfPTable tableDetalleCompra, ObservableList<CuotasYpagos> cuotasYpagoss) {
     crearHeader(tableDetalleCompra,
         new String[]{"Nro.Cuota", "Monto Cuota", "Descripción", "Vencimiento", "Cuota" + " paga?"});
 
@@ -271,7 +252,7 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
   }
 
 
-  public void generarReporteUIDeudores(boolean soloVencidas) {
+  public void generarReporteUIDeudores() {
     entityManager = context.getEntityManager();
     CompraDao compraDao = new CompraDao(entityManager);
     List<Compra> comprasConDeuda = compraDao.getComprasConDeuda();
@@ -282,11 +263,8 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
     }));
     tvDeudores.getItems().clear();
 
-    if (soloVencidas) {
-      tvDeudores.getItems().addAll(obtenerVencidas(comprasConDeuda, LocalDate.now()));
-    } else {
-      tvDeudores.getItems().addAll(comprasConDeuda);
-    }
+    tvDeudores.getItems().addAll(comprasConDeuda);
+
     compraDao.close();
 
     //Aplico el filtro para las localidades
@@ -295,26 +273,4 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
     filtro.apply();
   }
 
-  /*
-  Dada una lista de compras , devuelvo aquellas que tengan un saldo vencido (fecha de cuota impaga menor o igual a la
-   "FechaReferencia pasada como parámetro
-   */
-  private List<Compra> obtenerVencidas(List<Compra> listaCompras, LocalDate fechaReferencia) {
-    List<Compra> listaVencidas = new ArrayList<Compra>();
-
-
-    for (Compra compra : listaCompras) {
-      ObservableList<CuotasYpagos> listaCuotasYPagos = obtenerTablaDeCuotas(compra);
-
-      for (CuotasYpagos cuotasYpagos : listaCuotasYPagos) {
-        if ((cuotasYpagos.getFechaVencimiento().isBefore(fechaReferencia.plusDays(1))) && !cuotasYpagos.getCuotaPaga()
-            .equals(Constantes.CUOTA_PAGA)) {
-          listaVencidas.add(compra);
-
-        }
-      }
-    }
-    return listaVencidas;
-
-  }
 }

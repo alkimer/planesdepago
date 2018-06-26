@@ -1,10 +1,10 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 import static com.planesdepago.services.ClienteServices.obtenerTodosLosClientes;
 
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.entities.Cliente;
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ApplicationContext;
 
 import javafx.collections.FXCollections;
@@ -72,14 +72,7 @@ public class MainController extends AbstractController implements Initializable 
 
 
   public void buscarTodosLosClientes() {
-    //   entityManager = context.getEntityManager();
-    //  clienteDao = new ClienteDao(entityManager);
-
-    //  List<Cliente> listaClientes = clienteDao.findAll();
-
     createTableListaClientes(obtenerTodosLosClientes());
-    // clienteDao.close();
-
   }
 
   @FXML
@@ -136,34 +129,6 @@ public class MainController extends AbstractController implements Initializable 
 
   @FXML
   private void actionBtnNuevoCliente(ActionEvent event) {
-/*
-    entityManager = context.getEntityManager();
-    CompraDao compraDao = new CompraDao(entityManager);
-    Compra comp = new Compra();
-    comp.setCuit("1234");
-    comp.setCantCuotas(12);
-    comp.setFecha(LocalDate.now());
-    comp.setDescripcion("prueba2");
-    comp.setInteres(35);
-    comp.setMontoCompra(new BigDecimal("12000"));
-    comp.setMontoAFinanciar(new BigDecimal("10000"));
-
-
-    Pago pag = new Pago();
-    pag.setDescripcionPago("anticipo");
-    pag.setFechaPago(LocalDate.now());
-    pag.setMontoPagado(new BigDecimal("1000"));
-    comp.addPago(pag);
-    pag = new Pago();
-    pag.setDescripcionPago("cuota 1");
-    pag.setFechaPago(LocalDate.now());
-    pag.setMontoPagado(new BigDecimal("1200.50"));
-    comp.addPago(pag);
-    compraDao.create(comp);
-
-    compraDao.close();
-    */
-
 
     cambiarEscena("Crear nuevo cliente", "/UI_CrearCliente.fxml", Modality.WINDOW_MODAL, this, event);
   }
@@ -236,30 +201,4 @@ public class MainController extends AbstractController implements Initializable 
     });
 
   }
-/*
-  private AbstractController cambiarEscena(String title, String resourceLocation, Modality modality) {
-    AbstractController abstractController;
-    Stage stage = new Stage();
-    Parent root = null;
-    FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource(resourceLocation));
-    try {
-      root = loader.load();
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    abstractController = loader.getController();
-    abstractController.init(this);
-
-    stage.setScene(new Scene(root));
-    stage.setTitle(title);
-    stage.initModality(modality);
-
-    //La comenté .. ver
-    // stage.initOwner(((Node) event.getSource()).getScene().getWindow());
-    stage.show();
-    return abstractController;
-
-  } */
 }

@@ -1,4 +1,4 @@
-package com.planesdepago.tableRows;
+package com.planesdepago.tablerows;
 
 public class BackupsFolders {
 

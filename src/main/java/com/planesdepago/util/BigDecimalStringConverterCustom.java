@@ -7,8 +7,11 @@ import java.math.BigDecimal;
 
 public class BigDecimalStringConverterCustom extends StringConverter<BigDecimal> {
 
-  /** {@inheritDoc} */
-  @Override public BigDecimal fromString(String value) {
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public BigDecimal fromString(String value) {
     // If the specified value is null or zero-length, return null
     if (value == null) {
       return null;
@@ -16,7 +19,7 @@ public class BigDecimalStringConverterCustom extends StringConverter<BigDecimal>
 
     value = value.trim();
 
-    value = value.replaceAll(",",".");
+    value = value.replaceAll(",", ".");
     if (value.length() < 1) {
       return null;
     }
@@ -24,19 +27,22 @@ public class BigDecimalStringConverterCustom extends StringConverter<BigDecimal>
     try {
       resultado = new BigDecimal(value);
     } catch (Exception e) {
-
+      e.printStackTrace();
     }
 
     return resultado;
   }
 
-  /** {@inheritDoc} */
-  @Override public String toString(BigDecimal value) {
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String toString(BigDecimal value) {
     // If the specified value is null, return a zero-length String
     if (value == null) {
       return "";
     }
 
-    return ((BigDecimal)value).toString();
+    return value.toString();
   }
 }

@@ -1,4 +1,4 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 import com.planesdepago.GestionPrestamos;
 import com.planesdepago.entities.Cliente;
@@ -91,7 +91,7 @@ public class UIMainIntegradoController extends AbstractController implements Ini
 
   @FXML
   private void onActionMiNuevoCliente(ActionEvent event) {
-    AbstractController abs = cambiarEscena("Crear nuevo cliente", "/UI_CrearCliente.fxml", Modality.WINDOW_MODAL, this,
+    cambiarEscena("Crear nuevo cliente", "/UI_CrearCliente.fxml", Modality.WINDOW_MODAL, this,
         mapToNodeCompatibleEvent(mbMenuSuperior, event));
     //((UICrearClienteController) abs).createTableListaClientes();
 
@@ -100,38 +100,36 @@ public class UIMainIntegradoController extends AbstractController implements Ini
 
   @FXML
   private void onActionMiDeudoresVencidos(ActionEvent event) {
-    AbstractController abs =
-        cambiarEscena("Reporte de Deudores Vencidos", "/UI_ReporteDeudoresVencidos.fxml", Modality.WINDOW_MODAL, this,
-            mapToNodeCompatibleEvent(mbMenuSuperior, event));
+    cambiarEscena("Reporte de Deudores Vencidos", "/UI_ReporteDeudoresVencidos.fxml", Modality.WINDOW_MODAL, this,
+        mapToNodeCompatibleEvent(mbMenuSuperior, event));
 
   }
 
   @FXML
   private void onActionMiDeudoresTodos(ActionEvent event) {
-    AbstractController abs =
-        cambiarEscena("Reporte de Deudores: Todos", "/UI_ReporteDeudoresTodos.fxml", Modality.WINDOW_MODAL, this,
-            mapToNodeCompatibleEvent(mbMenuSuperior, event));
+    cambiarEscena("Reporte de Deudores: Todos", "/UI_ReporteDeudoresTodos.fxml", Modality.WINDOW_MODAL, this,
+        mapToNodeCompatibleEvent(mbMenuSuperior, event));
 
   }
 
   @FXML
   private void onActionMiTotalesDiarios(ActionEvent event) {
-    AbstractController abs =
-        cambiarEscena("Reporte Pagos Diarios", "/UI_ReportePagosDiarios.fxml", Modality.WINDOW_MODAL, this,
-            mapToNodeCompatibleEvent(mbMenuSuperior, event));
+
+    cambiarEscena("Reporte Pagos Diarios", "/UI_ReportePagosDiarios.fxml", Modality.WINDOW_MODAL, this,
+        mapToNodeCompatibleEvent(mbMenuSuperior, event));
 
   }
 
   @FXML
   private void onActionMiRestaurar(ActionEvent event) {
-    AbstractController abs = cambiarEscena("Restaurar Backup", "/UI_GestorBackups.fxml", Modality.WINDOW_MODAL, this,
+    cambiarEscena("Restaurar Backup", "/UI_GestorBackups.fxml", Modality.WINDOW_MODAL, this,
         mapToNodeCompatibleEvent(mbMenuSuperior, event));
 
   }
 
   @FXML
   private void onActionMiCrearBackup(ActionEvent event) {
-    AbstractController abs = cambiarEscena("Crear Backup", "/UI_CrearBackup.fxml", Modality.WINDOW_MODAL, this,
+    cambiarEscena("Crear Backup", "/UI_CrearBackup.fxml", Modality.WINDOW_MODAL, this,
         mapToNodeCompatibleEvent(mbMenuSuperior, event));
 
   }

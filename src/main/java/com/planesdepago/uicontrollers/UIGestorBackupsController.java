@@ -1,11 +1,11 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.Constantes.DB_BACKUP_FOLDER;
+import static com.planesdepago.uiutils.Constantes.DB_BACKUP_FOLDER;
 import static com.planesdepago.util.DatabaseUtils.restoreDatabase;
 
-import com.planesdepago.tableRows.BackupsFolders;
-import com.planesdepago.uiUtils.Constantes;
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.tablerows.BackupsFolders;
+import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ArchivosUtils;
 
 import javafx.application.Platform;
@@ -87,7 +87,7 @@ public class UIGestorBackupsController extends AbstractController implements Ini
   private List<BackupsFolders> obtenerListadoBackups() {
     List<Path> listaCarpetas = ArchivosUtils.obtenerListadoArchivos(Constantes.DB_BACKUP_FOLDER);
     BackupsFolders backupsFolders;
-    List<BackupsFolders> listaBackupFolders = new ArrayList<BackupsFolders>();
+    List<BackupsFolders> listaBackupFolders = new ArrayList<>();
     for (Path carpeta : listaCarpetas) {
       backupsFolders = new BackupsFolders();
       backupsFolders.setFolder(carpeta.getFileName().toString());

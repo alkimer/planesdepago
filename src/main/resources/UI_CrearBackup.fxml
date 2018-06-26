@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UICrearBackupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="244.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uicontrollers.UICrearBackupController">
    <children>
       <Label layoutX="22.0" layoutY="97.0" text="Ingrese el nombre del backup" />
       <TextField fx:id="tfNombreBackup" layoutX="192.0" layoutY="93.0" prefHeight="25.0" prefWidth="240.0" />

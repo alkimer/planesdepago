@@ -1,13 +1,13 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 import static com.planesdepago.util.CuotasYPagosUtils.obtenerTablaDeCuotas;
 
 import com.planesdepago.dao.CompraDao;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.tableRows.CuotasYpagos;
-import com.planesdepago.uiUtils.Constantes;
+import com.planesdepago.tablerows.CuotasYpagos;
+import com.planesdepago.uiutils.Constantes;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.CuotasYPagosUtils;
 
@@ -121,8 +121,6 @@ public class UIVerEstadoPagosController extends AbstractController implements In
     CompraDao compraDao = new CompraDao(entityManager);
 
     compraSeleccionada = (Compra) compraDao.find(compraSeleccionada.getIdTransaccion());
-    //  List<Pago> listaPagos = compraSeleccionada.getPagos();
-    // List<Cuota> listaCuotas = compraSeleccionada.getCuotas();
     createTableCuotasYpagos(this.compraSeleccionada);
 
     this.tfRazonSocialCliente.setText(this.compraSeleccionada.getIDCliente().getRazonSocial());

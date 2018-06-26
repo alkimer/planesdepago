@@ -1,4 +1,4 @@
-package com.planesdepago.uiUtils;
+package com.planesdepago.uiutils;
 
 import javafx.util.StringConverter;
 
@@ -10,7 +10,12 @@ import java.time.format.DateTimeFormatter;
  */
 public class DateUtils {
   public static final String FORMATO_FECHA = "dd-MM-yyyy";
-  public static DateTimeFormatter myDateFormatter = DateTimeFormatter.ofPattern(DateUtils.FORMATO_FECHA);
+  public static final DateTimeFormatter myDateFormatter = DateTimeFormatter.ofPattern(DateUtils.FORMATO_FECHA);
+
+  private DateUtils() {
+    throw new IllegalStateException("Utility class shouldn't be instantiated.");
+
+  }
 
   public static StringConverter<LocalDate> formateadorLocalDate()
 

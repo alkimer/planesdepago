@@ -1,9 +1,9 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.entities.Cliente;
-import com.planesdepago.uiUtils.DialogPopUp;
-import com.planesdepago.uiUtils.ListaLocalidades;
+import com.planesdepago.uiutils.DialogPopUp;
+import com.planesdepago.uiutils.ListaLocalidades;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +21,6 @@ public class UIEditarClienteController extends AbstractClientController implemen
   private Button btnGuardar;
   @FXML
   private Button btnCancelar;
-  private UIEditarClienteController uiEditarClienteController;
 
   @FXML
   private void onActionBtnGuardar(ActionEvent event) {
@@ -34,7 +33,6 @@ public class UIEditarClienteController extends AbstractClientController implemen
           "Se ha editado la información del cliente seleccionado");
       clienteDao.close();
 
-      //  ((MainController) mainController).buscarTodosLosClientes();
       ((UIListadoClientesController) mainController).createTableListaClientes();
       this.cerrarVentana();
     }
@@ -49,11 +47,6 @@ public class UIEditarClienteController extends AbstractClientController implemen
   private void cerrarVentana() {
     Stage stage = (Stage) btnCancelar.getScene().getWindow();
     stage.close();
-
-  }
-
-  //Seteo el cliente en la UI
-  void setCliente(Cliente cliente) {
 
   }
 

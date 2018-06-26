@@ -5,12 +5,6 @@ import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.entities.Cliente;
 import com.planesdepago.util.ApplicationContext;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
 import java.util.Comparator;
 import java.util.List;
 
@@ -21,7 +15,9 @@ public class ClienteServices {
   static EntityManager entityManager;
   static ClienteDao clienteDao;
 
-
+private ClienteServices() {
+  throw new IllegalStateException("Utility class shouldn't be instantiated.");
+}
 
   public static List<Cliente> obtenerTodosLosClientes() {
     entityManager = context.getEntityManager();

@@ -3,11 +3,6 @@
  */
 package com.planesdepago.dao;
 
-/**
- * @author planesdepago
- *
- */
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -50,12 +45,7 @@ public abstract class AbstractFacade<T> {
 		getEntityManager().getTransaction().begin();
 		getEntityManager().remove(getEntityManager().merge(entity));
 		getEntityManager().getTransaction().commit();
-	/*
-		getEntityManager().getTransaction().begin();
-		T find = getEntityManager().find(entityClass, entity);
-		getEntityManager().remove(find);
-		getEntityManager().getTransaction().commit();
-		*/
+
 	}
 
 	public T find(Object id) {
@@ -71,17 +61,17 @@ public abstract class AbstractFacade<T> {
 
 	//Existe en la base de datos ?
 public boolean exists(Object key) {
-		EntityManager entityManager = getEntityManager();
-		Metamodel metamodel = entityManager.getMetamodel();
+		EntityManager em = getEntityManager();
+		Metamodel metamodel = em.getMetamodel();
 		EntityType<T> entity = metamodel.entity(entityClass);
 		SingularAttribute<T, ? extends Object> declaredId = entity.getDeclaredId(key.getClass());
-		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+		CriteriaBuilder cb = em.getCriteriaBuilder();
 		javax.persistence.criteria.CriteriaQuery<T> cq = cb.createQuery(entityClass);
 		Root<T> from = cq.from(entityClass);
 		Predicate condition = cb.equal(from.get(declaredId), key);
 		cq.where(condition);
-		TypedQuery<T> q = entityManager.createQuery(cq);
-		return q.getResultList().size() > 0;
+		TypedQuery<T> q = em.createQuery(cq);
+		return !q.getResultList().isEmpty();
 	}
 
 	public void close() {

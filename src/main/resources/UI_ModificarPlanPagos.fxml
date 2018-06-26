@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uiControllers.UIModificarPlanPagosController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uicontrollers.UIModificarPlanPagosController">
    <children>
       <TextField fx:id="tfDescripcion" layoutX="142.0" layoutY="99.0" prefHeight="25.0" prefWidth="394.0" />
       <DatePicker fx:id="dpFecha" disable="true" editable="false" layoutX="599.0" layoutY="99.0" prefHeight="25.0" prefWidth="119.0" />

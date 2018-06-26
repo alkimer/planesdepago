@@ -1,10 +1,10 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 import com.planesdepago.GestionPrestamos;
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.entities.Cliente;
-import com.planesdepago.uiUtils.DialogPopUp;
-import com.planesdepago.uiUtils.ListaLocalidades;
+import com.planesdepago.uiutils.DialogPopUp;
+import com.planesdepago.uiutils.ListaLocalidades;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,9 +20,6 @@ public class UICrearClienteController extends AbstractClientController implement
 
   //private MainController mainController;
   private ClienteDao clienteDao;
-
-  //Prueba de integracion
-  private GestionPrestamos main;
 
   @FXML
   private Button btnInsertar;
@@ -74,10 +71,5 @@ public class UICrearClienteController extends AbstractClientController implement
     stage.close();
 
   }
-
-  public void setMain(GestionPrestamos main) {
-    this.main = main;
-  }
-
 
 }
