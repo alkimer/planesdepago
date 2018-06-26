@@ -1,9 +1,9 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.Constantes.DB_BACKUP_FOLDER;
+import static com.planesdepago.uiutils.Constantes.DB_BACKUP_FOLDER;
 import static com.planesdepago.util.DatabaseUtils.backUpDatabase;
 
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ArchivosUtils;
 
 import javafx.event.ActionEvent;
@@ -40,6 +40,9 @@ public class UICrearBackupController extends AbstractClientController implements
           DB_BACKUP_FOLDER + ArchivosUtils.todaysDate.format((java.util.Calendar.getInstance()).getTime()) + "-"
               + tfNombreBackup.getText();
       backUpDatabase(backupdirectory);
+      DialogPopUp.crearDialogo(Alert.AlertType.INFORMATION, "Confirmación", "Se ha creado el backup",
+          "");
+
       this.cerrarVentana();
 
     } catch (SQLException e) {

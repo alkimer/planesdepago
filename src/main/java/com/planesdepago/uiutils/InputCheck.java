@@ -1,4 +1,4 @@
-package com.planesdepago.uiUtils;
+package com.planesdepago.uiutils;
 
 import com.planesdepago.entities.Cuota;
 
@@ -12,6 +12,11 @@ import java.math.BigDecimal;
 
 public class InputCheck {
 
+  private InputCheck() {
+    throw new IllegalStateException("Utility class shouldn't be instantiated.");
+
+  }
+
   /*
   Chequeo que no tenga dos o mas puntos decimales
    */
@@ -22,7 +27,7 @@ public class InputCheck {
       if (value.charAt(i) == Constantes.SEPARADOR_DECIMAL) cont++;
     }
 
-    return cont < 2 ;
+    return cont < 2;
   }
 
   /*
@@ -53,17 +58,15 @@ public class InputCheck {
     } else {
       ev.consume();
 
-    }}
+    }
+  }
 
   public static void procesarIngresoMonto(TableColumn.CellEditEvent<Cuota, BigDecimal> data) {
- //   if (data.getEventType().equals(KeyEvent.KEY_PRESSED) || data.getEventType().equals(KeyEvent.KEY_RELEASED) ||
-  //      data.getEventType().equals(KeyEvent.KEY_TYPED)){
- //   if (Constantes.PATRON_MONTOS_VALIDOS.contains(data..get()) || ev.getCode().equals(KeyCode.BACK_SPACE)) {
-      if (Constantes.PATRON_MONTOS_VALIDOS.contains(data.getNewValue().toString().substring(data.getNewValue()
-          .toString().length())) ) { System.out.print("werwer23");
+    if (Constantes.PATRON_MONTOS_VALIDOS
+        .contains(data.getNewValue().toString().substring(data.getNewValue().toString().length()))) {
+      System.out.print("werwer23");
     } else {
-     // ev.consume();
 
-    }}
-  //}
+    }
+  }
 }

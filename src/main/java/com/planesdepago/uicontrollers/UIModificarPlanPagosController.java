@@ -1,6 +1,6 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
-import static com.planesdepago.uiUtils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 
 import com.planesdepago.dao.CompraDao;
 import com.planesdepago.dao.CuotaDao;
@@ -9,9 +9,9 @@ import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Cuota;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.uiUtils.DatePickerCellCustom;
-import com.planesdepago.uiUtils.DateUtils;
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.uiutils.DatePickerCellCustom;
+import com.planesdepago.uiutils.DateUtils;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.BigDecimalStringConverterCustom;
 
@@ -47,7 +47,6 @@ public class UIModificarPlanPagosController extends AbstractController implement
 
   EntityManager entityManager;
 
-  private Cliente clienteSeleccionado;
   private Compra compraSeleccionada;
 
   @FXML
@@ -104,7 +103,6 @@ public class UIModificarPlanPagosController extends AbstractController implement
     this.dpFecha.setOnAction(new EventHandler<ActionEvent>() {
       @Override
       public void handle(ActionEvent event) {
-        //       btnConfirmarModificacionPlanDePagos.setDisable(true);
       }
     });
     this.tfMonto.setText("0");
@@ -213,7 +211,7 @@ public class UIModificarPlanPagosController extends AbstractController implement
 
     //Si encuentro que por tema de redondeo, el total de las cuotas difiere del total financiado, entonces agrego esa
     // diferencia en la última cuota.
-    if (importeAFinanciar.compareTo(totalCuotas) == 1) {
+    if (importeAFinanciar.compareTo(totalCuotas) > 0) {
 
       cuota.setMontoCuota(cuota.getMontoCuota().add(importeAFinanciar.subtract(totalCuotas)));
       totalCuotas = calcularTotalCuotas(listaCuotas);
@@ -235,49 +233,11 @@ public class UIModificarPlanPagosController extends AbstractController implement
       } else {
 
         entityManager = context.getEntityManager();
-        //   int numeroCuotas = Integer.valueOf((String) this.cbCantCuotas.getValue());
-        //   Pago pago = new Pago();
         CompraDao compraDao = new CompraDao(entityManager);
-        CuotaDao cuotaDao = new CuotaDao(entityManager);
-        // ClienteDao clienteDao = new ClienteDao(entityManager);
-
-        //  Compra comp = new Compra();
         Compra comp = compraSeleccionada;
-        //  comp.setCantCuotas(numeroCuotas);
-        //  comp.setFecha(dpFecha.getValue());
         comp.setDescripcion(tfDescripcion.getText());
-        //  comp.setInteres(new BigDecimal(tfInteres.getText()));
-        //  comp.setMontoCompra(new BigDecimal(tfMonto.getText()));
-        //  comp.setMontoAFinanciar(new BigDecimal(tfImporteAFinanciar.getText()));
-        //  comp.setSaldoRestante(new BigDecimal(tfImporteAFinanciar.getText()));
-
         ObservableList<Cuota> listaCuotas = tvListaCalculoCuotas.getItems();
         comp.setCuotas(listaCuotas);
-
-/*
-      //Si hubo anticipo lo cargo en forma de Pago para que aparezca en el histórico
-          if (new BigDecimal(tfMonto.getText()).compareTo(new BigDecimal(tfAnticipo.getText())) == -1) {
-        DialogPopUp.crearDialogo(Alert.AlertType.ERROR, "Error", "Anticipo erróneo",
-            "El anticipo no puede ser mayor que el monto de la compraSeleccionada");
-      } else {if (new BigDecimal(tfAnticipo.getText()).compareTo(BigDecimal.ZERO) == 1) {
-        //Si el anticipo es mayor a 0 , lo guardo como pago
-        pago.setMontoPagado(new BigDecimal(tfAnticipo.getText()));
-        pago.setDescripcionPago(Constantes.ANTICIPO);
-        pago.setFechaPago(LocalDate.now());
-        comp.addPago(pago);
-      }
-*/
-
-        //      clienteSeleccionado = clienteDao.find(clienteSeleccionado.getCuit());
-        //       clienteSeleccionado.addCompra(comp);
-
-        //     clienteDao.edit(clienteSeleccionado);
-        //    clienteDao.close();
-      /*
-      for  (Cuota cuota: listaCuotas) {
-        cuotaDao.edit(cuota);
-      }
-*/
         compraDao.edit(comp);
         compraDao.close();
         DialogPopUp.crearDialogo(Alert.AlertType.INFORMATION, "Confirmación", "Modificación exitosa",
@@ -296,7 +256,6 @@ public class UIModificarPlanPagosController extends AbstractController implement
 
   //inicializo el clienteSeleccionado
   void init(Cliente cliente, Compra compra) {
-    this.clienteSeleccionado = cliente;
     this.compraSeleccionada = compra;
 
     entityManager = context.getEntityManager();
@@ -305,7 +264,7 @@ public class UIModificarPlanPagosController extends AbstractController implement
     tfDescripcion.setText(compra.getDescripcion());
     dpFecha.setValue(compra.getFecha());
     tfMonto.setText(String.valueOf(compra.getMontoCompra()));
-    tfAnticipo.setText(String.valueOf(((Pago) pagoDao.getAnticipo(compraSeleccionada)).getMontoPagado()));
+    tfAnticipo.setText(String.valueOf((pagoDao.getAnticipo(compraSeleccionada)).getMontoPagado()));
     cbCantCuotas.setValue(compra.getCantCuotas());
     tfInteres.setText(String.valueOf(compra.getInteres()));
     tfCuit.setText(cliente.getCuit());
@@ -332,18 +291,17 @@ public class UIModificarPlanPagosController extends AbstractController implement
     tcVencimientoCuota.setCellFactory(new Callback<TableColumn, TableCell>() {
       @Override
       public TableCell call(TableColumn p) {
-        DatePickerCellCustom datePick = new DatePickerCellCustom(tvListaCalculoCuotas.getItems());
-        return datePick;
+        return new DatePickerCellCustom(tvListaCalculoCuotas.getItems());
       }
     });
 
 
-    tcVencimientoCuota.setOnEditCommit(data -> {
-      btnConfirmarModificacionPlanDePagos.setDisable(false);
-    });
-    tcVencimientoCuota.setOnEditStart(data -> {
-      btnConfirmarModificacionPlanDePagos.setDisable(true);
-    });
+    tcVencimientoCuota.setOnEditCommit(data ->
+      btnConfirmarModificacionPlanDePagos.setDisable(false)
+    );
+    tcVencimientoCuota.setOnEditStart(data ->
+      btnConfirmarModificacionPlanDePagos.setDisable(true)
+    );
 
     tcDescripcionCuota.setCellValueFactory(new PropertyValueFactory<Cuota, String>("descripcion"));
     tcDescripcionCuota.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -353,9 +311,9 @@ public class UIModificarPlanPagosController extends AbstractController implement
       btnConfirmarModificacionPlanDePagos.setDisable(false);
     });
 
-    tcDescripcionCuota.setOnEditStart(data -> {
-      btnConfirmarModificacionPlanDePagos.setDisable(true);
-    });
+    tcDescripcionCuota.setOnEditStart(data ->
+      btnConfirmarModificacionPlanDePagos.setDisable(true)
+    );
 
 
     //Inicialmente creo la tabla de cuotas pero con la info de la DB

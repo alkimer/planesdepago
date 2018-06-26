@@ -1,7 +1,7 @@
 package com.planesdepago.util;
 
-import static com.planesdepago.uiControllers.UIMainIntegradoController.hostServices;
-import static com.planesdepago.uiUtils.DateUtils.formatLocalDate2StringPattern;
+import static com.planesdepago.uicontrollers.UIMainIntegradoController.hostServices;
+import static com.planesdepago.uiutils.DateUtils.formatLocalDate2StringPattern;
 
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
@@ -15,7 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.planesdepago.uiUtils.Constantes;
+import com.planesdepago.uiutils.Constantes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,7 +45,6 @@ public class PdfUtils {
 
     // border
     cell.setBorder(0);
-    //   cell.setBorderWidthBottom(2f);
 
     return cell;
   }
@@ -151,7 +150,7 @@ public class PdfUtils {
 
   public static void deletePdfFiles() {
 
-    if (Files.exists(Paths.get(Constantes.PATH_PDFS))) {
+    if (Paths.get(Constantes.PATH_PDFS).toFile().exists()) {
       Arrays.stream(new File(Constantes.PATH_PDFS).listFiles()).forEach(File::delete);
     } else {
       try {
@@ -167,7 +166,6 @@ public class PdfUtils {
 
     //Busco el pdf y lo abro con la app standard que tenga asignada en windows.
     String pathPDF = System.getProperty("user.dir") + fileName;
-    //System.out.print(pathPDF);
     hostServices.showDocument(pathPDF);
   }
 }

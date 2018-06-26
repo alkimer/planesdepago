@@ -1,10 +1,10 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 import static com.planesdepago.services.ClienteServices.obtenerTodosLosClientes;
 
 import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.entities.Cliente;
-import com.planesdepago.uiUtils.DialogPopUp;
+import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ApplicationContext;
 
 import javafx.beans.binding.Bindings;
@@ -121,17 +121,10 @@ public class UIListadoClientesController extends AbstractController implements I
 
 
   private void onEditarCliente(ActionEvent event) {
-    //  int selectedIndex = tvListaClientes.getSelectionModel().getSelectedIndex();
-    // if (selectedIndex >= 0) {
     AbstractController cont =
         cambiarEscena("Ver/Editar cliente", "/UI_EditarCliente.fxml", Modality.WINDOW_MODAL, this, event);
     ((UIEditarClienteController) cont).mapCliente2UI(clienteSeleccionado);
 
-    //  } else {
-    //No seleccionó ningún cliente
-    //    DialogPopUp.crearDialogo(Alert.AlertType.WARNING, "Advertencia", "Debe seleccionar un cliente",
-    //        "Debe " + "seleccionar un cliente de la lista para poder editarlo");
-    //  }
   }
 
 
@@ -147,7 +140,7 @@ public class UIListadoClientesController extends AbstractController implements I
     FilteredList<Cliente> filteredData = new FilteredList<>(clientes, p -> true);
 
     // 2. Set the filter Predicate whenever the filter changes.
-    tfBuscadorPersonaFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+    tfBuscadorPersonaFilter.textProperty().addListener((observable, oldValue, newValue) ->
       filteredData.setPredicate(cliente -> {
         // If filter text is empty, display all persons.
         if (newValue == null || newValue.isEmpty()) {
@@ -163,8 +156,8 @@ public class UIListadoClientesController extends AbstractController implements I
           return true; // Filter matches cuit.
         }
         return false; // Does not match.
-      });
-    });
+      })
+    );
 
     // 3. Wrap the FilteredList in a SortedList.
     SortedList<Cliente> sortedData = new SortedList<>(filteredData);
@@ -176,10 +169,6 @@ public class UIListadoClientesController extends AbstractController implements I
     tvListaClientes.setItems(sortedData);
 
     //fin codigo filtro
-
-
-//    tvListaClientes.getItems().clear();
-    //   tvListaClientes.getItems().addAll(clientes);
 
     //Agrego los menu items contextuales
 
@@ -217,9 +206,5 @@ public class UIListadoClientesController extends AbstractController implements I
     });
   }
 
-  @FXML
-  private void onActionBtnBuscarPesona(ActionEvent event) {
 
-
-  }
 }

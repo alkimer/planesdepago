@@ -1,5 +1,21 @@
-package com.planesdepago.uiUtils;
+package com.planesdepago.uiutils;
 
+import com.planesdepago.util.PropertiesUtils;
+
+public class ListaLocalidades {
+
+  public static String[] values() {
+  String localidades = PropertiesUtils.readProperty("Localidades");
+
+    return localidades.split(",");
+  }
+
+  public static String valueOf(String value) {
+    return value;
+  }
+
+}
+/*
 
 public enum ListaLocalidades {
   DIECISIETEDEAGOSTO("17 de Agosto"),
@@ -35,5 +51,5 @@ public enum ListaLocalidades {
     return this.displayName;
   }
 
-
 }
+*/

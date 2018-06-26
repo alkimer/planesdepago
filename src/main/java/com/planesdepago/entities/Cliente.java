@@ -52,13 +52,7 @@ public class Cliente implements Serializable{
         return false;
     } else if (!cuit.equals(other.cuit))
       return false;
-    /*
-    if (username == null) {
-      if (other.username != null)
-        return false;
-    } else if (!username.equals(other.username))
-      return false;
-    */
+
     return true;
   }
   @Override

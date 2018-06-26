@@ -1,4 +1,4 @@
-package com.planesdepago.uiControllers;
+package com.planesdepago.uicontrollers;
 
 import static com.planesdepago.util.PdfUtils.crearEncabezadoMiSuenioHogar;
 import static com.planesdepago.util.PdfUtils.crearRandomPDFFileName;
@@ -13,9 +13,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.planesdepago.dao.CompraDao;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
-import com.planesdepago.uiUtils.Constantes;
-import com.planesdepago.uiUtils.DialogPopUp;
-import com.planesdepago.uiUtils.InputCheck;
+import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.DialogPopUp;
+import com.planesdepago.uiutils.InputCheck;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.PDFeventListener;
 import com.planesdepago.util.PdfUtils;
@@ -85,7 +85,7 @@ public class UINuevoPagoController extends AbstractController implements Initial
   private void onActionBtnAceptar(ActionEvent event) {
    if( camposObligatoriosValidosParaIngresarPago()) {
      //si quiero pagar más de lo que debo...
-     if (saldoRestante.compareTo(new BigDecimal(tfMontoApagar.getText())) == -1) {
+     if (saldoRestante.compareTo(new BigDecimal(tfMontoApagar.getText())) < 0) {
        DialogPopUp.crearDialogo(Alert.AlertType.INFORMATION, "Error", "Reingrese el monto a pagar",
            "Usted intenta pagar un monto mayor al total adeudado por la compra ($" + this.saldoRestante + ")");
 
@@ -103,7 +103,6 @@ public class UINuevoPagoController extends AbstractController implements Initial
 
        entityManager = context.getEntityManager();
        CompraDao compraDao = new CompraDao(entityManager);
-       //  compraSeleccionada = (Compra)compraDao.find(compraSeleccionada.getIdTransaccion());
        compraSeleccionada.addPago(pago);
        compraSeleccionada.setSaldoRestante(compraSeleccionada.getSaldoRestante().subtract(pago.getMontoPagado()));
        compraDao.edit(compraSeleccionada);
@@ -131,7 +130,7 @@ public class UINuevoPagoController extends AbstractController implements Initial
     entityManager = context.getEntityManager();
     CompraDao compraDao = new CompraDao(entityManager);
     compraSeleccionada = (Compra) compraDao.find(compraSeleccionada.getIdTransaccion());
-    if (compraSeleccionada.getPagos().size() > 0) {
+    if (!compraSeleccionada.getPagos().isEmpty()) {
       this.cbAnticipo.setDisable(true);
     }
     compraDao.close();
@@ -163,7 +162,6 @@ public class UINuevoPagoController extends AbstractController implements Initial
     compraSeleccionada = (Compra) compraDao.find(compraSeleccionada.getIdTransaccion());
 
     compraDao.close();
-    // crearHeader(tablePlanPagos, new String[]{"Nombre", "Compra", "Monto pagado", "Fecha", "Saldo Restante"});
     tableComprobantePago.addCell("CUIT/DNI");
     tableComprobantePago.addCell(compraSeleccionada.getIDCliente().getCuit());
     tableComprobantePago.addCell("Nombre");
