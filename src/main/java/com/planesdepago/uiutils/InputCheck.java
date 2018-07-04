@@ -64,7 +64,6 @@ public class InputCheck {
   public static void procesarIngresoMonto(TableColumn.CellEditEvent<Cuota, BigDecimal> data) {
     if (Constantes.PATRON_MONTOS_VALIDOS
         .contains(data.getNewValue().toString().substring(data.getNewValue().toString().length()))) {
-      System.out.print("werwer23");
     } else {
 
     }

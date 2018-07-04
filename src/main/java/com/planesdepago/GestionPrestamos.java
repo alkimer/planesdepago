@@ -10,7 +10,6 @@ import static com.planesdepago.util.PdfUtils.deletePdfFiles;
 import com.planesdepago.uicontrollers.UIMainIntegradoController;
 import com.planesdepago.uiutils.Constantes;
 import com.planesdepago.util.ArchivosUtils;
-import com.planesdepago.util.PropertiesUtils;
 
 import javafx.application.Application;
 import javafx.application.Platform;

@@ -1,10 +1,14 @@
 package com.planesdepago.entities;
 
+import com.planesdepago.uiutils.ListaTarjetas;
+import com.planesdepago.uiutils.ListaTiposDePago;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pago implements Serializable {
@@ -27,6 +32,14 @@ public class Pago implements Serializable {
   private BigDecimal montoPagado;
   private LocalDate fechaPago;
   private String descripcionPago;
+
+  private ListaTiposDePago tipoPago;
+  @OneToOne(mappedBy = "idPago", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+
+  private Cheque cheque;
+  private String tarjeta;
+
+  private Integer numeroRetencion;
 
 
   @Override
@@ -78,5 +91,43 @@ public class Pago implements Serializable {
 
   public void setDescripcionPago(String descripcionPago) {
     this.descripcionPago = descripcionPago;
+  }
+
+  public ListaTiposDePago getTipoPago() {
+    return tipoPago;
+  }
+
+  public void setTipoPago(ListaTiposDePago tipoPago) {
+    this.tipoPago = tipoPago;
+  }
+
+  public Cheque getCheque() {
+    return cheque;
+  }
+
+  public void setCheque(Cheque cheque) {
+    this.cheque = cheque;
+  }
+
+  public String getTarjeta() {
+    return tarjeta;
+  }
+
+  public void setTarjeta(String tarjeta) {
+    this.tarjeta = tarjeta;
+  }
+
+  public void addCheque(Cheque cheque) {
+    this.cheque = cheque;
+    cheque.setIdPago(this);
+
+  }
+
+  public Integer getNumeroRetencion() {
+    return numeroRetencion;
+  }
+
+  public void setNumeroRetencion(Integer numeroRetencion) {
+    this.numeroRetencion = numeroRetencion;
   }
 }

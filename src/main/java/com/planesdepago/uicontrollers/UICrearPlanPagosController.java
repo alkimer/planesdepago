@@ -33,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -49,6 +50,8 @@ public class UICrearPlanPagosController extends AbstractController implements In
   EntityManager entityManager;
 
   private Cliente cliente;
+@FXML
+Button btnAnticipo;
 
   @FXML
   TextField tfCuit;
@@ -82,6 +85,8 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
   @FXML
   Button btnCalcularCuotas;
+
+  private Pago anticipo = new Pago();
 
   //Definiciones de la tabla de cuotas
   @FXML
@@ -174,6 +179,14 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
   }
 
+  @FXML
+  private void onActionBtnAnticipo(ActionEvent event) {
+    AbstractController cont = cambiarEscena("Anticipo", "/UI_NuevoPago.fxml", Modality.WINDOW_MODAL, this, event);
+   //llamo con persistir en false porque todavía la compra no existe
+
+    ((UINuevoPagoController) cont).init(null, null,true);
+
+  }
 
   @FXML
   private void onActionBtnCalcularCuotas(ActionEvent event) {
@@ -256,7 +269,7 @@ public class UICrearPlanPagosController extends AbstractController implements In
 
         entityManager = context.getEntityManager();
         int numeroCuotas = Integer.valueOf((String) this.cbCantCuotas.getValue());
-        Pago pago = new Pago();
+     //   Pago pago = new Pago();
         ClienteDao clienteDao = new ClienteDao(entityManager);
 
         Compra comp = new Compra();
@@ -279,10 +292,10 @@ public class UICrearPlanPagosController extends AbstractController implements In
         } else {
           if (new BigDecimal(tfAnticipo.getText()).compareTo(BigDecimal.ZERO) > 0) {
             //Si el anticipo es mayor a 0 , lo guardo como pago
-            pago.setMontoPagado(new BigDecimal(tfAnticipo.getText()));
-            pago.setDescripcionPago(Constantes.ANTICIPO);
-            pago.setFechaPago(LocalDate.now());
-            comp.addPago(pago);
+         //   pago.setMontoPagado(new BigDecimal(tfAnticipo.getText()));
+         //   pago.setDescripcionPago(Constantes.ANTICIPO);
+         //   pago.setFechaPago(LocalDate.now());
+            comp.addPago(anticipo);
           }
 
 
@@ -427,5 +440,9 @@ public class UICrearPlanPagosController extends AbstractController implements In
     tfTotalCuotas.setText(String.valueOf(sumaCuotas));
   }
 
-
+ public void setearAnticipo (Pago anticipo) {
+    this.anticipo = anticipo;
+    this.tfAnticipo.setText(String.valueOf(anticipo.getMontoPagado()));
+    System.out.println("recibi el anticipo de " + anticipo.getMontoPagado());
+ }
 }

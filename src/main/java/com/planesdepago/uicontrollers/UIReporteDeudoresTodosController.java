@@ -188,8 +188,8 @@ public class UIReporteDeudoresTodosController extends AbstractController impleme
 
 
     for (Compra compra : filtro.apply().getBackingList()) {
-
-      tableCompra = new PdfPTable(6);
+      tableCompra = new PdfPTable(new float[]{1,1,1,1,1.4f,0.6f});
+     // tableCompra = new PdfPTable(6);
       tableCompra.setTotalWidth(PageSize.A4.getHeight());
       tableCompra.setLockedWidth(true);
       if (conDetallesPlanPago) {

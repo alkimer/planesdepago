@@ -4,10 +4,12 @@ import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
 import static com.planesdepago.util.CuotasYPagosUtils.obtenerTablaDeCuotas;
 
 import com.planesdepago.dao.CompraDao;
+import com.planesdepago.dao.PagoDao;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
 import com.planesdepago.tablerows.CuotasYpagos;
 import com.planesdepago.uiutils.Constantes;
+import com.planesdepago.uiutils.ListaTiposDePago;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.CuotasYPagosUtils;
 
@@ -74,6 +76,9 @@ public class UIVerEstadoPagosController extends AbstractController implements In
 
   @FXML
   private Button onActionBtnImprimirPlanPagos;
+
+  @FXML
+  private Button btnVerDetallesAnticipo;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -162,7 +167,25 @@ public class UIVerEstadoPagosController extends AbstractController implements In
   @FXML
   private void onActionBtnNuevoPago(ActionEvent event) {
     AbstractController cont = cambiarEscena("Nuevo Pago", "/UI_NuevoPago.fxml", Modality.WINDOW_MODAL, this, event);
-    ((UINuevoPagoController) cont).init(compraSeleccionada, new BigDecimal(this.tfSaldoRestante.getText()));
+
+    ((UINuevoPagoController) cont).init(compraSeleccionada, new BigDecimal(this.tfSaldoRestante.getText()), false);
+
+
+  }
+
+  /*
+  abro el mismo componente que el nuevo pago, pero read-only
+   */
+  @FXML
+  private void onActionBtnVerDetallesAnticipo(ActionEvent event) {
+    AbstractController cont =
+        cambiarEscena("Detalles Anticipo", "/UI_NuevoPago.fxml", Modality.WINDOW_MODAL, this, event);
+    PagoDao pagoDao = new PagoDao(context.getEntityManager());
+    Pago anticipo = pagoDao.getAnticipo(compraSeleccionada);
+    if ((anticipo.getMontoPagado().compareTo(BigDecimal.ZERO) == 0) || (anticipo.getTipoPago() == null)) {
+      anticipo.setTipoPago(ListaTiposDePago.EFECTIVO);
+    }
+    ((UINuevoPagoController) cont).configurarSoloLectura(anticipo);
 
 
   }

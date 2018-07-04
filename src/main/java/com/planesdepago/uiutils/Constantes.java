@@ -31,4 +31,6 @@ public class Constantes {
   public static final String TEXT_VERIFIQUE_LOS_DATOS = "Por favor verifique los datos ingresados.";
   public static final String TEXT_ERROR = "Error";
   public static final String TEXT_REVISE_LA_INFORMACION = "Verifique los datos ingresados";
+  public static final String TEXT_TIPO_PAGO_NO_INDICADO = "No indicado";
+
 }

@@ -1,6 +1,7 @@
 package com.planesdepago.uicontrollers;
 
 import static com.planesdepago.uiutils.DateUtils.myDateFormatter;
+import static com.planesdepago.uiutils.PagosUtils.obtenerDescripcion;
 import static com.planesdepago.util.PdfUtils.crearEncabezadoMiSuenioHogar;
 import static com.planesdepago.util.PdfUtils.crearHeader;
 import static com.planesdepago.util.PdfUtils.crearRandomPDFFileName;
@@ -12,16 +13,22 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.planesdepago.dao.ClienteDao;
 import com.planesdepago.dao.CompraDao;
 import com.planesdepago.dao.PagoDao;
+import com.planesdepago.entities.Cheque;
+import com.planesdepago.entities.Cliente;
 import com.planesdepago.entities.Compra;
 import com.planesdepago.entities.Pago;
+import com.planesdepago.uiutils.Constantes;
 import com.planesdepago.uiutils.DateUtils;
 import com.planesdepago.uiutils.DialogPopUp;
 import com.planesdepago.util.ApplicationContext;
 import com.planesdepago.util.PdfUtils;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -66,6 +73,10 @@ public class UIVerHistorialPagosController extends AbstractController implements
   private TableColumn<Pago, String> tcDescripcion;
 
   @FXML
+  private TableColumn<Pago, String> tcModalidad;
+
+
+  @FXML
   private TextField tfNombre;
 
   @FXML
@@ -99,7 +110,38 @@ public class UIVerHistorialPagosController extends AbstractController implements
       return cell;
     });
     tcMonto.setCellValueFactory(new PropertyValueFactory<Pago, String>("montoPagado"));
-    tcDescripcion.setCellValueFactory(new PropertyValueFactory<Pago, String>("descripcionPago"));
+    tcDescripcion.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Pago, String>, ObservableValue<String>>() {
+      @Override
+      public ObservableValue<String> call(
+          TableColumn.CellDataFeatures<Pago, String> param) {
+    /*    String texto = param.getValue().getDescripcionPago();
+        if (param.getValue().getTipoPago() != null) {
+          switch (param.getValue().getTipoPago()) {
+            case CHEQUE:
+              Cheque cheque = param.getValue().getCheque();
+              texto +=
+                  " Nro.cheque: " + cheque.getNroCheque() + " Vencimiento: " + cheque.getFechaVencimiento() + ""
+                      + " Banco: " + cheque.getBanchoEmisor() + " Retenciones: " + cheque.getRetenciones();
+              break;
+            case TARJETA:
+              texto += " Tarjeta: " + param.getValue().getTarjeta();
+              break;
+          }
+        }*/
+        return new SimpleStringProperty(obtenerDescripcion(param.getValue()));
+      }
+    });
+    tcModalidad.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Pago, String>, ObservableValue<String>>() {
+
+      @Override
+      public ObservableValue<String> call(
+          TableColumn.CellDataFeatures<Pago, String> param) {
+        String texto = "";
+        texto = param.getValue().getTipoPago() == null ? texto = Constantes.TEXT_TIPO_PAGO_NO_INDICADO
+            : param.getValue().getTipoPago().toString();
+        return new SimpleStringProperty(texto);
+      }
+    });
 
   }
 
@@ -156,7 +198,8 @@ public class UIVerHistorialPagosController extends AbstractController implements
   }
 
   @FXML
-  private void onActionBtnImprimir(ActionEvent event) {
+  private void onActionBtnImprimirPDF(ActionEvent event) {
+    EntityManager entityManager = context.getEntityManager();
     Document document = new Document(PageSize.A4);
     String fileName = crearRandomPDFFileName("HistoricoPagos");
     PdfWriter writer = new PdfUtils().createWriter(document, fileName);
@@ -164,16 +207,15 @@ public class UIVerHistorialPagosController extends AbstractController implements
     crearEncabezadoMiSuenioHogar(document);
     crearTitulo(document, "Histórico de Pagos");
 
-    PdfPTable tableHistoricoPagos = new PdfPTable(3);
-    tableHistoricoPagos.setTotalWidth(PageSize.A4.getWidth() * 0.7f);
+    PdfPTable tableHistoricoPagos = new PdfPTable(4);
+    tableHistoricoPagos.setTotalWidth(PageSize.A4.getWidth() * 0.8f);
     tableHistoricoPagos.setLockedWidth(true);
 
-    crearHeader(tableHistoricoPagos, new String[]{"Nombre", "Compra", "Monto financiado"});
+    crearHeader(tableHistoricoPagos, new String[]{"Nombre", "Compra", "Monto financiado", ""});
     tableHistoricoPagos.addCell(tfNombre.getText());
     tableHistoricoPagos.addCell(tfDescripcionCompra.getText());
     tableHistoricoPagos.addCell(tfMontoFinanciado.getText());
-
-    crearHeader(tableHistoricoPagos, new String[]{"Fecha", "Descripción del pago", "Monto pagado"});
+    tableHistoricoPagos.addCell("");
     compraSeleccionada.getPagos().sort(new Comparator<Pago>() {
       public int compare(Pago left, Pago right) {
         if (left.getFechaPago().isBefore(right.getFechaPago())) {
@@ -184,16 +226,24 @@ public class UIVerHistorialPagosController extends AbstractController implements
       }
     });
 
-    for (Pago pago : compraSeleccionada.getPagos()) {
+    crearHeader(tableHistoricoPagos, new String[]{"Fecha", "Descripción del pago", "Modalidad", "Monto"});
 
-      tableHistoricoPagos.addCell(DateUtils.formatLocalDate2StringPattern(pago.getFechaPago()));
-      tableHistoricoPagos.addCell(pago.getDescripcionPago());
+    for (Pago pago : tvPagos.getItems()) {
+
+      tableHistoricoPagos.addCell(pago.getFechaPago().toString());
+      tableHistoricoPagos.addCell(obtenerDescripcion(pago));
+      tableHistoricoPagos
+          .addCell(pago.getTipoPago() != null ? pago.getTipoPago().toString() : Constantes.TEXT_TIPO_PAGO_NO_INDICADO);
       tableHistoricoPagos.addCell(String.valueOf(pago.getMontoPagado()));
-    }
 
-    crearHeader(tableHistoricoPagos, new String[]{"", "Saldo Restante", ""});
+    }
+    //Parece que al cerrar este em se cierran los demás (el de pago y cliente)
+   // pagoDao.close();
+
+    crearHeader(tableHistoricoPagos, new String[]{"", "Saldo Restante", "",""});
     tableHistoricoPagos.addCell("");
     tableHistoricoPagos.addCell(tfSaldoRestante.getText());
+    tableHistoricoPagos.addCell("");
     tableHistoricoPagos.addCell("");
 
     try {

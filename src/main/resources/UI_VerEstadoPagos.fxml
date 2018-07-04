@@ -30,5 +30,6 @@
       <TextField fx:id="tfInteres" editable="false" layoutX="620.0" layoutY="44.0" prefHeight="25.0" prefWidth="45.0" />
       <Label layoutX="564.0" layoutY="48.0" text="Interes(%)" />
       <Button fx:id="btnImprimirPlanPagos" layoutX="251.0" layoutY="502.0" mnemonicParsing="false" onAction="#onActionBtnImprimirPlanPagos" prefHeight="25.0" prefWidth="215.0" text="Imprimir Estado del Plan de Pagos" />
+      <Button fx:id="btnVerDetallesAnticipo" layoutX="440.0" layoutY="44.0" mnemonicParsing="false" onAction="#onActionBtnVerDetallesAnticipo" text="Ver detalles" />
    </children>
 </AnchorPane>

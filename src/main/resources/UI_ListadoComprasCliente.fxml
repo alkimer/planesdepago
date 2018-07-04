@@ -14,10 +14,10 @@
         <columns>
             <TableColumn fx:id="tcDescripcion" prefWidth="121.0" text="Descripción Plan" />
             <TableColumn fx:id="tcFecha" prefWidth="67.0" text="Fecha" />
-            <TableColumn fx:id="tcMontoCompra" prefWidth="129.0" text="Monto Compra" />
-            <TableColumn fx:id="tcMontoFinanciado" prefWidth="128.0" text="Monto Financiado" />
-            <TableColumn fx:id="tcCuotas" prefWidth="47.0" text="Cuotas" />
-            <TableColumn fx:id="tcSaldoRestante" minWidth="115.0" prefWidth="115.0" text="Saldo restante" />
+            <TableColumn fx:id="tcMontoCompra" prefWidth="129.0" style="-fx-alignment: CENTER_RIGHT;" text="Monto Compra" />
+            <TableColumn fx:id="tcMontoFinanciado" prefWidth="128.0" style="-fx-alignment: CENTER_RIGHT;" text="Monto Financiado" />
+            <TableColumn fx:id="tcCuotas" prefWidth="47.0" style="-fx-alignment: CENTER_RIGHT;" text="Cuotas" />
+            <TableColumn fx:id="tcSaldoRestante" minWidth="115.0" prefWidth="115.0" style="-fx-alignment: CENTER_RIGHT;" text="Saldo restante" />
         </columns>
       </TableView>
       <Button fx:id="btnNuevaCompra" layoutX="450.0" layoutY="14.0" mnemonicParsing="false" onAction="#onActionBtnNuevaCompra" text="Nueva compra" />

@@ -175,7 +175,8 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
     //Si no necesito los detalles solo creo un header y no lo vuevlo a replicar más
 
     if (!conDetallesPlanPago) {
-      tableCompra = new PdfPTable(6);
+      tableCompra = new PdfPTable(new float[]{1,1,1,1,1.4f,0.6f});
+
       tableCompra.setTotalWidth(PageSize.A4.getHeight());
       tableCompra.setLockedWidth(true);
       crearHeader(tableCompra,
@@ -190,7 +191,7 @@ public class UIReporteDeudoresVencidosController extends AbstractController impl
 
     for (Compra compra : filtro.apply().getBackingList()) {
 
-      tableCompra = new PdfPTable(6);
+      tableCompra = new PdfPTable(new float[]{1,1,1,1,1.4f,0.6f});
       tableCompra.setTotalWidth(PageSize.A4.getHeight());
       tableCompra.setLockedWidth(true);
       if (conDetallesPlanPago) {

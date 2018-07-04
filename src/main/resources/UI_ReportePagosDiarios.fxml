@@ -5,9 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uicontrollers.UIReportePagosDiarios">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.planesdepago.uicontrollers.UIReportePagosDiarios">
    <children>
-      <TableView fx:id="tvPagos" layoutY="77.0" prefHeight="248.0" prefWidth="600.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="77.0">
+      <TableView fx:id="tvPagos" layoutY="77.0" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="89.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="77.0">
           <placeholder>
               <Label text="No se registraron pagos el día seleccionado." />
           </placeholder>
@@ -15,7 +15,8 @@
             <TableColumn fx:id="tcRazonSocial" prefWidth="110.0" text="Razon Social" />
           <TableColumn fx:id="tcFecha" prefWidth="112.0" text="Fecha pago" />
             <TableColumn fx:id="tcDescripcion" minWidth="0.0" prefWidth="138.0" text="Descripcion" />
-          <TableColumn fx:id="tcMonto" prefWidth="143.0" text="Monto" />
+            <TableColumn fx:id="tcModalidadPago" prefWidth="143.0" text="Modalidad" />
+          <TableColumn fx:id="tcMonto" prefWidth="143.0" style="-fx-alignment: CENTER_RIGHT;" text="Monto" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -23,15 +24,34 @@
       </TableView>
       <DatePicker fx:id="dpFecha" layoutX="38.0" layoutY="28.0" />
       <Button fx:id="btnGenerarReporte" layoutX="227.0" layoutY="28.0" mnemonicParsing="false" onAction="#onActionBtnGenerarReporte" text="Generar reporte" />
-      <HBox layoutX="328.0" layoutY="345.0" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="60.0">
+      <VBox layoutX="441.0" layoutY="370.0" prefHeight="42.0" prefWidth="145.0">
          <children>
-            <Label text="Total ingresos" textOverrun="CLIP" />
-            <TextField fx:id="tfTotalIngresos" editable="false" prefColumnCount="0" prefHeight="25.0" prefWidth="137.0">
+            <Label layoutX="328.0" layoutY="345.0" text="Total ingresos" textOverrun="CLIP" />
+            <TextField fx:id="tfTotalIngresos" editable="false" layoutX="403.0" layoutY="345.0" prefColumnCount="0" prefHeight="25.0" prefWidth="117.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </TextField>
          </children>
-      </HBox>
+      </VBox>
+      <VBox layoutX="14.0" layoutY="370.0">
+         <children>
+            <Label layoutX="22.0" layoutY="337.0" text="Total cheques" />
+            <TextField fx:id="tfTotalCheques" editable="false" layoutX="22.0" layoutY="354.0" prefHeight="25.0" prefWidth="112.0" />
+         </children>
+      </VBox>
+      <VBox layoutX="156.0" layoutY="370.0">
+         <children>
+            <Label layoutX="212.0" layoutY="337.0" text="Total tarjetas" />
+            <TextField fx:id="tfTotalTarjetas" editable="false" layoutX="212.0" layoutY="354.0" prefHeight="25.0" prefWidth="112.0" />
+         </children>
+      </VBox>
+      <VBox layoutX="300.0" layoutY="370.0">
+         <children>
+            <Label layoutX="328.0" layoutY="337.0" text="Total efectivo" />
+            <TextField fx:id="tfTotalEfectivo" editable="false" layoutX="328.0" layoutY="354.0" prefHeight="25.0" prefWidth="112.0" />
+         </children>
+      </VBox>
+      <Button fx:id="btnImprimir" layoutX="258.0" layoutY="420.0" mnemonicParsing="false" onAction="#onActionBtnImprimir" prefHeight="25.0" prefWidth="85.0" text="Imprimir" />
    </children>
 </AnchorPane>
