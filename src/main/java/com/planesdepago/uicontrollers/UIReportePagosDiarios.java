@@ -87,6 +87,9 @@ public class UIReportePagosDiarios extends AbstractController implements Initial
   private TextField tfTotalEfectivo;
 
   @FXML
+  private TextField tfTotalRetenciones;
+
+  @FXML
   private Button btnImprimir;
 
 
@@ -213,6 +216,7 @@ public class UIReportePagosDiarios extends AbstractController implements Initial
     BigDecimal sumaTarjetas = BigDecimal.ZERO;
     BigDecimal sumaCheques = BigDecimal.ZERO;
     BigDecimal sumaEfectivo = BigDecimal.ZERO;
+    BigDecimal sumaRetenciones = BigDecimal.ZERO;
 
     for (Pago pago : listaPagos) {
       sumaTotalPagos = sumaTotalPagos.add(pago.getMontoPagado());
@@ -227,6 +231,9 @@ public class UIReportePagosDiarios extends AbstractController implements Initial
           case EFECTIVO:
             sumaEfectivo = sumaEfectivo.add(pago.getMontoPagado());
             break;
+          case RETENCIONES:
+            sumaRetenciones = sumaRetenciones.add(pago.getMontoPagado());
+            break;
         }
       }
     }
@@ -234,6 +241,7 @@ public class UIReportePagosDiarios extends AbstractController implements Initial
     tfTotalEfectivo.setText(String.valueOf(sumaEfectivo));
     tfTotalCheques.setText(String.valueOf(sumaCheques));
     tfTotalTarjetas.setText(String.valueOf(sumaTarjetas));
+    tfTotalRetenciones.setText(String.valueOf(sumaRetenciones));
   }
 
   @FXML
@@ -273,11 +281,19 @@ public class UIReportePagosDiarios extends AbstractController implements Initial
     //Parece que al cerrar este em se cierran los demás (el de pago y cliente)
     pagoDao.close();
 
-    crearHeader(tableReporteDiario, new String[]{"Total Cheques", "Total Tarjeta", "Total Efectivo", "Total Ingresos"});
+    crearHeader(tableReporteDiario, new String[]{"Total Cheques", "Total Tarjeta", "Total Efectivo", "Total "
+        + "Retenciones"});
     tableReporteDiario.addCell(String.valueOf(tfTotalCheques.getText()));
     tableReporteDiario.addCell(String.valueOf(tfTotalTarjetas.getText()));
     tableReporteDiario.addCell(String.valueOf(tfTotalEfectivo.getText()));
+    tableReporteDiario.addCell(String.valueOf(tfTotalRetenciones.getText()));
+
+    crearHeader(tableReporteDiario, new String[]{"", "", "Total Ingresos", ""});
+    tableReporteDiario.addCell("");
+    tableReporteDiario.addCell("");
     tableReporteDiario.addCell(String.valueOf(tfTotalIngresos.getText()));
+    tableReporteDiario.addCell("");
+
 
     try {
       document.add(tableReporteDiario);

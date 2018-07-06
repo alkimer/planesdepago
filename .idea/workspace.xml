@@ -7,28 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d79a747-4e91-4e10-8d9c-014c4d620229" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/PagosUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/derby.log" afterPath="$PROJECT_DIR$/derby.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/entities/Cheque.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/entities/Cheque.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/entities/Pago.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/entities/Pago.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UINuevoPagoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UINuevoPagoController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresTodosController.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresTodosController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresVencidosController.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresVencidosController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIVerHistorialPagosController.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIVerHistorialPagosController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/Constantes.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/Constantes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/InputCheck.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/InputCheck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaBancos.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaBancos.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaTarjetas.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaTarjetas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaTiposDePago.java" afterPath="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaTiposDePago.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_CrearPlanPagos.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_CrearPlanPagos.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_ListadoComprasCliente.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_ListadoComprasCliente.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_NuevoPago.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_NuevoPago.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_ReporteDeudoresTodos.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_ReporteDeudoresTodos.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_ReporteDeudoresVencidos.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_ReporteDeudoresVencidos.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_ReportePagosDiarios.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_ReportePagosDiarios.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/UI_VerHistorialPagos.fxml" afterPath="$PROJECT_DIR$/src/main/resources/UI_VerHistorialPagos.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,32 +29,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UIReportePagosDiarios.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UIReportePagosDiarios.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="248" column="58" lean-forward="false" selection-start-line="248" selection-start-column="58" selection-end-line="248" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UIReporteDeudoresTodosController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresTodosController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="190" column="43" lean-forward="false" selection-start-line="190" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UIReporteDeudoresVencidosController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresVencidosController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-412">
-              <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="226">
+              <caret line="293" column="31" lean-forward="false" selection-start-line="293" selection-start-column="31" selection-end-line="293" selection-end-column="31" />
+              <folding>
+                <element signature="e#3002#3383#0" expanded="true" />
+                <element signature="e#3382#3383#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +54,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tfTotalCuotas</find>
       <find>montoAfinan</find>
       <find>tfTota</find>
       <find>ANTI</find>
@@ -119,6 +83,7 @@
       <find>formatter</find>
       <find>format</find>
       <find>Table</find>
+      <find>tfTotalEfectivo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -187,9 +152,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/entities/Cheque.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/PagosUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UINuevoPagoController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresTodosController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresVencidosController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java" />
       </list>
     </option>
   </component>
@@ -242,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -533,7 +499,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -999,7 +964,14 @@
       <option name="project" value="LOCAL" />
       <updated>1530704690753</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="agregado los tipos de pago en el anticipo y en los pagos">
+      <created>1530824072111</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1530824072111</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1018,11 +990,10 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28477904" sideWeight="0.47049925" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3207856" sideWeight="0.42057487" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.198036" sideWeight="0.25189108" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19639935" sideWeight="0.25189108" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.60287446" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57937807" sideWeight="0.65431166" order="2" side_tool="false" content_ui="tabs" />
@@ -1030,20 +1001,21 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5499182" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34493193" sideWeight="0.48414376" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35022694" sideWeight="0.48414376" order="0" side_tool="false" content_ui="combo" />
       <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30114567" sideWeight="0.4969743" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18657938" sideWeight="0.47276855" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25378788" sideWeight="0.51585627" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.198036" sideWeight="0.7481089" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.198036" sideWeight="0.7481089" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06769723" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3207856" sideWeight="0.42057487" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18657938" sideWeight="0.47276855" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -1097,7 +1069,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="497" column="0" lean-forward="false" selection-start-line="497" selection-start-column="0" selection-end-line="497" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1160,7 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1">
           <caret line="237" column="12" lean-forward="false" selection-start-line="237" selection-start-column="12" selection-end-line="237" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1250,19 +1220,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="61">
           <caret line="1763" column="9" lean-forward="true" selection-start-line="1763" selection-start-column="9" selection-end-line="1763" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/UI_VerHistorialPagos.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/util/PdfUtils.java">
@@ -1279,7 +1248,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-82">
           <caret line="133" column="21" lean-forward="false" selection-start-line="133" selection-start-column="21" selection-end-line="133" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1315,14 +1283,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/String.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaBancos.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1343,7 +1304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="100" lean-forward="false" selection-start-line="7" selection-start-column="100" selection-end-line="7" selection-end-column="100" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1356,14 +1316,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/UI_CrearPlanPagos.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uiutils/ListaTarjetas.java">
@@ -1468,10 +1428,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresVencidosController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="248" column="58" lean-forward="false" selection-start-line="248" selection-start-column="58" selection-end-line="248" selection-end-column="60" />
+        <state relative-caret-position="-1040">
+          <caret line="223" column="37" lean-forward="true" selection-start-line="223" selection-start-column="37" selection-end-line="223" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -1484,11 +1444,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReporteDeudoresVencidosController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/planesdepago/uicontrollers/UIReportePagosDiarios.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412">
-          <caret line="190" column="0" lean-forward="true" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="226">
+          <caret line="293" column="31" lean-forward="false" selection-start-line="293" selection-start-column="31" selection-end-line="293" selection-end-column="31" />
+          <folding>
+            <element signature="e#3002#3383#0" expanded="true" />
+            <element signature="e#3382#3383#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

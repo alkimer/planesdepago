@@ -24,7 +24,7 @@
       </TableView>
       <DatePicker fx:id="dpFecha" layoutX="38.0" layoutY="28.0" />
       <Button fx:id="btnGenerarReporte" layoutX="227.0" layoutY="28.0" mnemonicParsing="false" onAction="#onActionBtnGenerarReporte" text="Generar reporte" />
-      <VBox layoutX="441.0" layoutY="370.0" prefHeight="42.0" prefWidth="145.0">
+      <VBox layoutX="435.0" layoutY="412.0" prefHeight="42.0" prefWidth="145.0">
          <children>
             <Label layoutX="328.0" layoutY="345.0" text="Total ingresos" textOverrun="CLIP" />
             <TextField fx:id="tfTotalIngresos" editable="false" layoutX="403.0" layoutY="345.0" prefColumnCount="0" prefHeight="25.0" prefWidth="117.0">
@@ -52,6 +52,16 @@
             <TextField fx:id="tfTotalEfectivo" editable="false" layoutX="328.0" layoutY="354.0" prefHeight="25.0" prefWidth="112.0" />
          </children>
       </VBox>
-      <Button fx:id="btnImprimir" layoutX="258.0" layoutY="420.0" mnemonicParsing="false" onAction="#onActionBtnImprimir" prefHeight="25.0" prefWidth="85.0" text="Imprimir" />
+      <Button fx:id="btnImprimir" layoutX="243.0" layoutY="421.0" mnemonicParsing="false" onAction="#onActionBtnImprimir" prefHeight="25.0" prefWidth="85.0" text="Imprimir" />
+      <VBox layoutX="435.0" layoutY="370.0" prefHeight="42.0" prefWidth="145.0">
+         <children>
+            <VBox>
+               <children>
+                  <Label layoutX="328.0" layoutY="337.0" prefHeight="17.0" prefWidth="134.0" text="Total Retenciones" />
+                  <TextField fx:id="tfTotalRetenciones" editable="false" layoutX="328.0" layoutY="354.0" prefHeight="25.0" prefWidth="101.0" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
