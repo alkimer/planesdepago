@@ -1,0 +1,11 @@
+
+Csquid:S1612(",Replace this lambda with a method reference.(·Çÿ§
+Asquid:S00108D")Either remove or fill this block of code.(å¥‡
+Hsquid:S1612%",Replace this lambda with a method reference.(ùÿ¥ğùÿÿÿÿ
+Asquid:S001089")Either remove or fill this block of code.(ç›ÏÁ
+Hsquid:S1602%",Remove useless curly braces around statement(ùÿ¥ğùÿÿÿÿ
+Hsquid:S1602+",Remove useless curly braces around statement(ñŠàùÿÿÿÿ
+Hsquid:S1612+",Replace this lambda with a method reference.(ñŠàùÿÿÿÿ
+T
+squid:S106C"9Replace this use of System.out or System.err by a logger.(ê€Ù‡şÿÿÿÿ
+Csquid:S1602(",Remove useless curly braces around statement(·Çÿ§

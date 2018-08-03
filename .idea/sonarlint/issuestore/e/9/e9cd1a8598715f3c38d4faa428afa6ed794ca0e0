@@ -1,0 +1,7 @@
+
+hsquid:CommentedOutCodeLine«"<This block of commented-out lines of code should be removed.(ðë¸‹üÿÿÿÿ
+Csquid:S1481§"+Remove this unused "writer" local variable.(©ò¼ý
+psquid:S1602†"SRemove useless curly braces around statement and then remove useless return keyword(™—èãÿÿÿÿÿ
+Rsquid:S1854§":Remove this useless assignment to local variable "writer".(©ò¼ý
+@squid:S1148º"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+@squid:S1148à"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

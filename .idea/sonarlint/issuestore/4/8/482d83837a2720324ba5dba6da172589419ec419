@@ -1,0 +1,5 @@
+
+Rsquid:S2696O"6Make the enclosing method "static" or remove this set.(Ί–ώÿÿÿÿ
+[
+squid:S106;"9Replace this use of System.out or System.err by a logger.(¨¶ΡΝώÿÿÿÿ8ήτώ”Ε,
+¤%squid:RedundantThrowsDeclarationCheck""nRemove the declaration of thrown exception 'java.io.IOException' which is a subclass of 'java.lang.Exception'.(β½Νϋÿÿÿÿ

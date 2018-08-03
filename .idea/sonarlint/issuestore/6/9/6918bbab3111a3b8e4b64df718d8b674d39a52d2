@@ -1,0 +1,10 @@
+
+_$squid:AssignmentInSubExpressionCheck®".Extract the assignment out of this expression.(à”–—
+bsquid:CommentedOutCodeLine|"<This block of commented-out lines of code should be removed.(”²µò
+rsquid:S1488e"\Immediately return this expression instead of assigning it to the temporary variable "cell".(¿¿ñ
+Fsquid:S1481{"*Remove this unused "texto" local variable.(Õ³Åßøÿÿÿÿ
+Csquid:S1481ü"+Remove this unused "writer" local variable.(©ò¼ý
+Usquid:S1854{"9Remove this useless assignment to local variable "texto".(Õ³Åßøÿÿÿÿ
+Qsquid:S1854®"9Remove this useless assignment to local variable "texto".(à”–—
+Rsquid:S1854ü":Remove this useless assignment to local variable "writer".(©ò¼ý
+@squid:S1148®"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

@@ -1,0 +1,6 @@
+
+Isquid:S1444"2Make this "public static hostServices" field final(Ù„·‘
+bsquid:CommentedOutCodeLine`"<This block of commented-out lines of code should be removed.(ïÚ”
+Ü"squid:ClassVariableVisibilityCheck"XMake hostServices a static final constant or non-public and provide accessors if needed.(Ù„·‘
+ùsquid:S11869"ÄAdd a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(€å¶Ö˝ˇˇˇˇ
+?squid:S1148G"#Use a logger to log this exception.(Ä…‘Ö˝ˇˇˇˇ

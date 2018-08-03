@@ -1,0 +1,7 @@
+
+Bsquid:S1481R"+Remove this unused "writer" local variable.(©ò¼ý
+Qsquid:S1854R":Remove this useless assignment to local variable "writer".(©ò¼ý
+?squid:S1148z"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+Rsquid:S1854Œ":Remove this useless assignment to local variable "writer".(©ò¼ý
+Csquid:S1481Œ"+Remove this unused "writer" local variable.(©ò¼ý
+@squid:S1148°"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ

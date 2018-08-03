@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: com.planesdepago
+Main-Class: com.planesdepago.GestionPrestamos
+
